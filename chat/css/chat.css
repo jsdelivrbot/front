@@ -1,0 +1,125 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	width: 100%;
+	height:100%;
+	position: absolute;
+	background-color: green !important;
+}
+.btn-msj{
+	border-radius: 50%;
+	margin-top: 45%;
+    font-size: 12px;
+    line-height: 18px;
+    background-color: skyblue;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    top: 0;
+    right: 7px;
+    cursor: pointer;
+}
+#header{
+	width: 100%;
+	height: 15%;
+	vertical-align: middle;
+}
+.hbody{
+	width: 100%;
+	height: 100%;
+	
+}
+#header .userico{
+	border-radius: 50%;
+	margin-top: 10px;
+    font-size: 12px;
+    line-height: 18px;
+    background-color: skyblue;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: 7px;
+    display: inline-block;
+    margin-left: 5px;
+}
+#header span{
+	margin-left: 40px;
+}
+#header .userico img{
+	margin-left: 3px;
+	margin-top: 5px;
+	width: 80%;
+	height: 80%;
+}
+.btn-msj img{
+	margin-top: 5px;
+	width: 80%;
+	height: 80%;
+}
+.chat-large{
+	border-radius: 5px;
+	display: block;
+	position: fixed;
+	/*border: 1px solid black;*/
+	width: 0px;
+	height: 0px;
+	margin-left: 75%;
+	margin-top: 330px;
+	display: none;
+}
+.chat-larges{
+	border-radius: 5px;
+	display: block;
+	position: relative;
+	/*border: 1px solid black;*/
+	width: 300px;
+	height: 350px;
+	margin-left: 75%;
+	margin-top: 330px;
+	
+}
+#fc{
+	background-color:#FBEFEF !important;
+	border-radius: 5px;
+	height: 100%;
+	/*border: 1px solid black;*/
+}
+#fc .body{
+	width: 100%;
+	height: 85%;
+	background-color: #E8E4D2;
+	margin-top: -5px;
+	padding: 10px;
+	/*position: absolute;
+	text-align: center;*/
+}
+.formulario{
+	width: 80%;
+	margin-left: 30px;
+}
+.term{
+	font-size: 12px;
+	color: silver;
+	margin-left: 4px;
+}
+/*#fc .body input[type=text]{
+	border-bottom:1px solid black;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	width: 80%;
+	height: 30px;
+}*/
+/*.textb{
+	border-bottom:1px solid black;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	width: 80%;
+	height: 30px;
+}*/

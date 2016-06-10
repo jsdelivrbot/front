@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>chat</title>
+	<link rel="import" type="text/css" href="layout.html">
+</head>
+<body>
+	<div class="animated slideInDown col s12 m2 chat-large" id="d" >
+		<form class="form-group" id="fc" style="height: 100%;">
+			<div id="header" class="col s12 m2">
+				<div class="hbody">
+					<div class="userico">
+						<img src="img/msj.png">
+					</div>
+					<span>Texto - nombre usuario</span>
+					<span onclick="rmclass();">
+						<div style="width: 10px;height: 10px;border-radius: 50%;float: right;cursor: pointer;margin-top: 7px;margin-right: 20px;">
+		    				<strong>__</strong>
+		    			</div>
+    				</span>
+				</div>
+			</div>
+			<div class="body">
+				<div class="formulario">
+					
+					<div class="input-field col s6">
+			          <input id="user" name="user" type="text" class="validate">
+			          <label for="user">NOMBRE</label>
+			        </div>
+					<div class="input-field col s6">
+			          <input id="last_name" type="email" class="validate">
+			          <label for="last_name" style="float: left;">EMAIL</label>
+			        </div>
+			        <center>
+			        	<a style="margin-left: 5px;color: white;" class="waves-effect waves-light btn">Iniciar chat</a>
+			        </center><br>
+			        <p class="term">Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones </p>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<div id="chat" onclick="addclass();" class="btn-msj" data-content="Bienvenido a Olo, ¿Tienes alguna duda?">
+	<script type="text/javascript">
+	  $('.btn-msj')
+	  .popup({
+	    position: 'right center'
+	  })
+	;
+	</script>
+		<img src="img/msj.png">
+	</div>
+</body>
+</html>
