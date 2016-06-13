@@ -18,3 +18,14 @@ function addclass(){
 	$('#d').addClass('animated slideInDown');
 	$('#chat').show();
 }
+function start(){
+	$('.body').load('body.html');
+}
+function time(){
+var tiempo = new Date();
+var hora = tiempo.getHours();
+var minuto = tiempo.getMinutes();
+var t=hora+":"+minuto;
+$('.date').text(t);
+console.log(t);
+}

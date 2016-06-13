@@ -8,18 +8,18 @@
 </head>
 <body>
 	<div class="animated slideInDown col s12 m2 chat-large" id="d" >
-		<form class="form-group" id="fc" style="height: 100%;">
+		<form class="form-group" id="fc" style="height: 100%;" action="#">
 			<div id="header" class="col s12 m2">
 				<div class="hbody">
 					<div class="userico">
 						<img src="img/msj.png">
 					</div>
-					<span>Texto - nombre usuario</span>
-					<span onclick="rmclass();">
-						<div style="width: 10px;height: 10px;border-radius: 50%;float: right;cursor: pointer;margin-top: 7px;margin-right: 20px;">
-		    				<strong>__</strong>
-		    			</div>
-    				</span>
+					<span id="name">Texto - nombre usuario</span>
+						<div class="min" onclick="rmclass();">
+							<span id="mico">
+			    				<strong>__</strong>
+			    			</span>
+		    			</div> 				
 				</div>
 			</div>
 			<div class="body">
@@ -30,16 +30,16 @@
 			          <label for="user">NOMBRE</label>
 			        </div>
 					<div class="input-field col s6">
-			          <input id="last_name" type="email" class="validate">
-			          <label for="last_name" style="float: left;">EMAIL</label>
-			        </div>
+			          <input id="last_name" name="email" type="email" class="validate">
+			          <label for="last_name">EMAIL</label>
+			        </div><br>
 			        <center>
 			        	<a style="margin-left: 5px;color: white;" class="waves-effect waves-light btn">Iniciar chat</a>
 			        </center><br>
 			        <p class="term">Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones </p>
-				</div>
+				</div><br>
+				<center><span class="foot" onclick="start();">powered by diloo</span></center>
 			</div>
-
 		</form>
 	</div>
 	<div id="chat" onclick="addclass();" class="btn-msj" data-content="Bienvenido a Olo, ¿Tienes alguna duda?">
