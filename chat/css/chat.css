@@ -69,11 +69,11 @@ body{
 	display: block;
 	position: fixed;
 	/*border: 1px solid black;*/
-	width: 0px;
-	height: 0px;
+	width: 300px;
+	height: 350px;
 	margin-left: 75%;
 	margin-top: 330px;
-	display: none;
+	
 }
 .chat-larges{
 	border-radius: 5px;

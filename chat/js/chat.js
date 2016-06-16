@@ -7,15 +7,15 @@ setTimeout(function(){
 function addclass(){
 	$('#d').removeClass('chat-large');
 	$('#d').addClass('chat-larges');
-	$('#d').removeClass('animated slideInDown');
-	$('#d').addClass('animated slideInUp');
+	$('#d').removeClass('animated zoomOut');
+	$('#d').addClass('animated zoomIn');
 	$('.btn-msj').trigger('destroy');
 	$('#chat').hide();
 }function rmclass(){
 	$('#d').removeClass('chat-larges');
 	$('#d').addClass('chat-large');
-	$('#d').removeClass('animated slideInUp');
-	$('#d').addClass('animated slideInDown');
+	$('#d').removeClass('animated zoomIn');
+	$('#d').addClass('animated zoomOut');
 	$('#chat').show();
 }
 function start(){
