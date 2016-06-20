@@ -70,19 +70,19 @@ body{
 	/*border: 1px solid black;*/
 	width: 300px;
 	height: 350px;
-	margin-left: 75%;
-	margin-top: 330px;
+	right: 10px;
+	bottom: 20px;
 	
 }
 .chat-larges{
 	border-radius: 5px;
 	display: block;
-	position: relative;
+	position: fixed;
 	/*border: 1px solid black;*/
 	width: 300px;
 	height: 350px;
-	margin-left: 75%;
-	margin-top: 330px;
+	right: 10px;
+	bottom: 5px;
 	
 }
 #fc{
