@@ -2,8 +2,8 @@ setTimeout(function(){
     $('.btn-msj').trigger('mouseover');
      setTimeout(function(){
         $('.btn-msj').trigger('mouseout');
-     },3000)
-},2000)
+     },2000)
+},1000)
 function addclass(){
 	$('#d').removeClass('chat-large');
 	$('#d').addClass('chat-larges');
