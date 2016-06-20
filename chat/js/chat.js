@@ -7,6 +7,7 @@ setTimeout(function(){
 function addclass(){
 	$('#d').removeClass('chat-large');
 	$('#d').addClass('chat-larges');
+	$('#d').removeClass('off');
 	$('#d').removeClass('animated zoomOut');
 	$('#d').addClass('animated zoomIn');
 	$('.btn-msj').trigger('destroy');
@@ -17,6 +18,9 @@ function addclass(){
 	$('#d').removeClass('animated zoomIn');
 	$('#d').addClass('animated zoomOut');
 	$('#chat').show();
+	setTimeout(function(){
+		$('#d').addClass('off');
+	},1000);
 }
 function start(){
 	$('.body').load('body.html');

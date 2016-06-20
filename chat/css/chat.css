@@ -101,6 +101,9 @@ body{
 	/*position: absolute;
 	text-align: center;*/
 }
+.off{
+	display: none;
+}
 .formulario{
 	width: 80%;
 	margin-left: 30px;
