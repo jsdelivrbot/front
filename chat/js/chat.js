@@ -20,7 +20,7 @@ function addclass(){
 	$('#chat').show();
 	setTimeout(function(){
 		$('#d').addClass('off');
-	},1000);
+	},400);
 }
 function start(){
 	$('.body').load('body.html');
