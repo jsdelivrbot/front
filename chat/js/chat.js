@@ -34,3 +34,13 @@ var t=hora+":"+minuto;
 $('.date').text(t);
 console.log(t);
 }
+function user(){
+	var m = $('#msm').val();
+	/* pintar los msj*/
+}
+function validation(){
+	var user = $('#user').val();
+	var email = $('#last-name').val();
+	/* validar with js*/
+	if (user.length>=4){}
+}
