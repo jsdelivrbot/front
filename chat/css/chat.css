@@ -2,11 +2,11 @@
 	margin: 0px;
 	padding: 0px;
 }
-body{
+html,body{
 	width: 100%;
 	height:100%;
 	position: absolute;
-	background-image: url('../img/xds.jpg'); !important;
+	background-color: transparent !important;
 }
 .btn-msj{
 	border-radius: 50%;
