@@ -34,13 +34,26 @@ var t=hora+":"+minuto;
 $('.date').text(t);
 console.log(t);
 }
-function user(){
-	var m = $('#msm').val();
-	/* pintar los msj*/
-}
-function validation(){
-	var user = $('#user').val();
-	var email = $('#last-name').val();
-	/* validar with js*/
-	if (user.length>=4){}
-}
+
+ $(function() {
+  
+    // Setup form validation on the #register-form element
+    $("#fc").validate({
+    
+        // Specify the validation rules
+        rules: {
+            user: "required",
+            last_name:"required"
+        },
+        
+        // Specify the validation error messages
+        messages: {
+            user: "Ingrese 1 digito mínimo",
+            last_name: "Inrese un correo válido",            
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+});

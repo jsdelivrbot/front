@@ -11,6 +11,7 @@
   	<link rel="stylesheet" type="text/css" href="css/chat.css">
 	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="js/chat.js"></script>
+	<script  type = "text/javascript"  src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js" ></script>
 	  <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   <script type="text/javascript" src="component/semantic/semantic.min.js"></script>
@@ -35,12 +36,11 @@
 			</div>
 			<div class="body">
 				<div class="formulario">				
-					<div class="input-field col s6">
-			          <input id="user" name="user" type="text" class="validate" required="true" >
-			          <label for="user">NOMBRE</label>
+					<div class="input-field col s6">					 
+			          <input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE">
 			        </div>
 					<div class="input-field col s6">
-			          <input id="last_name" name="email" type="email" class="validate" required="true">
+			          <input id="last_name" name="last_name" type="text" class="validate" >
 			          <label for="last_name">EMAIL</label>
 			        </div><br>
 			        <center>
