@@ -50,8 +50,10 @@ console.log(t);
         },
         submitHandler: function(form) {
            console.log("Usuario login");
-           start();
-           //actions.login({name:'miguel',email:'maliaga.pantoja@gmail.com'});
+           
+           //start();
+           var actions = new Actions();
+           actions.login({name:'miguel',email:'maliaga.pantoja@gmail.com'});
         }
     });
 });

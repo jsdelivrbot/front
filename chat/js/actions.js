@@ -29,9 +29,10 @@ function Chat(){
 }
 function Actions (){
     function login(user){
-        var url = document.getElementById('diloo-wjs');
-        var origin  = url.getAttribute('data-origin');
-        var company = url.getAttribute('data-creator');        
+        var url =JSON.parse(window.localStorage.dilooApp);
+        var origin  = url.o;
+        var company = url.c;    
+        console.log(url)    
         if(user.name && user.email && origin && company ){
             $.ajax({
                 url:window.serverIp + '/integrations/createuser'
@@ -48,6 +49,7 @@ function Actions (){
                     }else if(data.result.length){
                         var token = JSON.stringify(data.result[0]);
                         window.localStorage.dilooUser = token;
+                        console.log('ok')
                         return {error:null,success:true}
                     }else{
                         
@@ -57,10 +59,11 @@ function Actions (){
         }else{
             return {error:'invalid params',success:false}
         }
+
     }
     return{
         login:login
     }
 }
-var actions = new Actions();
+
 //actions.login({name:'miguel',email:'maliaga.pantoja@gmail.com'});

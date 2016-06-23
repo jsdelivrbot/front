@@ -15,7 +15,13 @@
                 script.setAttribute('data-creator',c);
                 script.setAttribute('data-origin',c);
                 script.src = 'http://localhost:8000/widget.js'
-                initialScript.parentNode.insertBefore(script,initialScript)
+                initialScript.parentNode.insertBefore(script,initialScript);
+                var credentials = {
+                    c:c
+                    ,o:o
+                }
+                window.localStorage.dilooApp = JSON.stringify(credentials)
+                
             }else{
                 console.error('some element has our registered id')
             }
