@@ -1,4 +1,4 @@
-window.serverIp = "http://192.168.1.17/integrations/createuser";
+window.serverIp = "http://192.168.1.17:1337";
 function Chat(){
      var socket = io.connect("http://dilooapp.com:3000");
      function join(room){
@@ -29,12 +29,12 @@ function Chat(){
 }
 function Actions (){
     function login(user){
-        var url = window.location.href.split('?');
-        var origin  = url[1].split('&')[1];
-        var company = url[1].split('&')[0];        
+        var url = document.getElementById('diloo-wjs');
+        var origin  = url.getAttribute('data-origin');
+        var company = url.getAttribute('data-creator');        
         if(user.name && user.email && origin && company ){
             $.ajax({
-                url:window.serverIp
+                url:window.serverIp + '/integrations/createuser'
                 ,data:{
                     name       : user.name
                     ,email     : user.email
@@ -63,4 +63,4 @@ function Actions (){
     }
 }
 var actions = new Actions();
-actions.login({name:'miguel',email:'maliaga.pantoja@gmail.com'});
+//actions.login({name:'miguel',email:'maliaga.pantoja@gmail.com'});
