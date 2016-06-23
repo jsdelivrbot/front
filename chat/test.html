@@ -6,19 +6,20 @@
 </head>
 <body style="background-color: red;">
 	<script>
-        (function(d,s,id,a){
+        (function(d,s,id,c,o){
             var script,initialScript;
             initialScript=d.getElementsByTagName(s)[0];
             if(!d.getElementById(id) ){
                 script=d.createElement(s);
                 script.id  = id;
-                script.setAttribute('data-access',a);
-                script.src = 'widget.js'
+                script.setAttribute('data-creator',c);
+                script.setAttribute('data-origin',c);
+                script.src = 'http://localhost:8000/chat/widget.js'
                 initialScript.parentNode.insertBefore(script,initialScript)
             }else{
                 console.error('some element has our registered id')
             }
-        })(document,"script","diloo-wjs","asdasdsadasdasd")
+        })(document,"script","diloo-wjs","086561f8-5c34-490d-b6b3-30455892e02c","web")
     </script>
     
     
