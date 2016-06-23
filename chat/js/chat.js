@@ -31,8 +31,8 @@ var tiempo = new Date();
 var hora = tiempo.getHours();
 var minuto = tiempo.getMinutes();
 var t=hora+":"+minuto;
-$('.date').text(t);
-console.log(t);
+//$('.date').text(t);
+return t;
 }
 
  $(function() {
@@ -57,3 +57,12 @@ console.log(t);
         }
     });
 });
+
+function msbot(msj){
+    var te=time();
+    $(".all").append("<div class='bot'><div class='bimg'><img src='img/komo7.jpg'></div><div class='text'>"+msj+"</div><div class='date'>"+te+"</div></div>");
+}
+function msuser(msj){
+    var te = time();
+    $(".all").append("<div class='user'><div class='utext'>"+msj+"</div><div class='date u'>"+te+"</div></div>");
+}

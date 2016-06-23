@@ -9,6 +9,11 @@ html,body{
 	position: absolute;
 	background-color: transparent !important;
 }
+.u{
+	position: relative;
+	text-align: right;
+	right: 20px;
+}
 .btn-msj{
 	border-radius: 50%;
 	bottom: 22px;

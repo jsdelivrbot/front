@@ -49,7 +49,8 @@ function Actions (){
                     }else if(data.result.length){
                         var token = JSON.stringify(data.result[0]);
                         window.localStorage.dilooUser = token;
-                        console.log('ok')
+                        console.log('ok');
+                        start();
                         return {error:null,success:true}
                     }else{
                         
@@ -61,8 +62,48 @@ function Actions (){
         }
 
     }
+    function createTicket(message){
+        var url =JSON.parse(window.localStorage.dilooApp);
+        var origin  = url.o;
+        var company = url.c;
+        var users = JSON.parse(window.localStorage.dilooUser);
+        var sesionid=users.sessionid;
+        var msj = document.getElementById('msm');
+        console.log(url)    
+        if(origin && company && sesionid && msj){
+            $.ajax({
+                url:window.serverIp + '/integrations/createTickets'
+                ,data:{
+                    message       : msj
+                    ,companyId    : company
+                    ,sessionId    : sesionid
+                    ,areaId       : "1"
+                    ,type         : origin
+                }
+                ,method:"POST"
+                ,success:function(data){
+                    console.log(data);
+                    if(data.error){
+                       console.log(data); 
+                    }else if(data.result.length){
+                        var token = JSON.stringify(data.result[0]);
+                        window.localStorage.dilooUser = token;
+                        console.log('ok');
+                        start();
+                        return {error:null,success:true}
+                    }else{
+                        
+                    }
+                }
+            })
+        }else{
+            console.log('invalid params');
+        }
+
+    }
     return{
         login:login
+        ,'createTicket':createTicket
     }
 }
 
