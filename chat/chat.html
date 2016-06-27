@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="component/semantic/semantic.min.css">
   <link rel="stylesheet" href="css/animate.css">
-  	<link rel="stylesheet" type="text/css" href="css/chat.css">
+  <link rel="stylesheet" type="text/css" href="css/chat.css">
 	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="js/actions.js"></script>
 	<script type="text/javascript" src="js/chat.js"></script>
@@ -16,50 +16,44 @@
 	  <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   <script type="text/javascript" src="component/semantic/semantic.min.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 </head>
 <body>
-	<div class="chat-large" id="d" >
-		<form class="form-group" id="fc" style="height: 100%;">
-			<div id="header" class="col s12 m2">
-				<div class="hbody">
-					<div class="userico">
-						<img src="img/msj.png">
-					</div>
-					<span id="name">Texto - nombre usuario</span>
-						<div class="min" onclick="rmclass();">
-							<span id="mico">
-			    				<strong>__</strong>
-			    			</span>
-		    			</div> 				
+<div class="chat-large" id="d" >
+	<div class="form-group" id="fc" style="height: 100%;">
+		<div id="header" class="col s12 m2">
+			<div class="hbody">
+				<div class="userico">
+					<img src="img/msj.png">
 				</div>
+				<span id="name">Texto - nombre usuario</span>
+				<div class="min" onclick="rmclass();">
+					<span id="mico">
+						<strong>__</strong>
+					</span>
+				</div> 				
 			</div>
-			<div class="body">
-				<div class="formulario">				
-					<div class="input-field col s6">					 
-			          <input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE">
-			        </div>
-					<div class="input-field col s6">
-			          <input id="last_name" name="last_name" type="text" class="validate" placeholder="EMAIL">
-			        </div><br>
-			        <center>
-			        	<button style="margin-left: 5px;color: white;" type="submit" class="waves-effect waves-light btn">Iniciar chat</button>
-			        </center><br>
-			        <p class="term">Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones </p>
-				</div><br>
-				<center><span class="foot">powered by diloo</span></center>
-			</div>
-		</form>
+		</div>
+<div class="body">
+<form id="fca">		
+<base></base>
+</form>
+<chat></chat>
+</div>
 	</div>
-	<div id="chat" onclick="addclass();" class="btn-msj" data-content="Bienvenido a Olo, ¿Tienes alguna duda?">
+</div>
+<div id="chat" onclick="addclass();" class="btn-msj" data-content="Bienvenido a Olo, ¿Tienes alguna duda?">
+	<img src="img/msj.png">
+</div>
+<script type="text/javascript">	
+		$('.btn-msj').popup({
+			position: 'right center'
+		});
+</script>
+	<script type="text/javascript" src="js/riot+compiler.min.js"></script>
+	<script type="riot/tag" src="tags/base.tag"></script>
+	<script type="riot/tag" src="tags/chat.tag"></script>
 	<script type="text/javascript">
-	  $('.btn-msj')
-	  .popup({
-	    position: 'right center'
-	  });
+		riot.mount('base');
 	</script>
-		<img src="img/msj.png">
-	</div>
 </body>
 </html>

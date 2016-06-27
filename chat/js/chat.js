@@ -7,9 +7,6 @@ setTimeout(function(){
 function addclass(){
 	$('#d').removeClass('chat-large');
 	$('#d').addClass('chat-larges');
-	//$('#d').removeClass('off');
-	//$('#d').removeClass('animated zoomOut');
-	//$('#d').addClass('animated zoomIn');
 	$('.btn-msj').trigger('destroy');
 	$('#chat').hide();
 	$('.start-chat').removeClass('off');
@@ -17,11 +14,8 @@ function addclass(){
 }function rmclass(){
 	$('#d').removeClass('chat-larges');
 	$('#d').addClass('chat-large');
-	//$('#d').removeClass('animated zoomIn');
-	//$('#d').addClass('animated zoomOut');
 	$('#chat').show();
 	$('.start-chat').addClass('off');
-	//$('#d').addClass('off');
 }
 function start(){
 	$('.body').load('body.html');
@@ -34,10 +28,9 @@ var t=hora+":"+minuto;
 //$('.date').text(t);
 return t;
 }
-
  $(function() {
     // Setup form validation on the #register-form element
-    $("#fc").validate({
+    $("#fca").validate({
         // Specify the validation rules
         rules: {
             user: "required",
@@ -49,15 +42,16 @@ return t;
             last_name: "Inrese un correo válido",            
         },
         submitHandler: function(form) {
-           console.log("Usuario login");
-           
+           console.log("Usuario login");      
            //start();
+           event.preventDefault();
+           $('base').remove();
+           riot.mount('chat')
            var actions = new Actions();
            actions.login({name:'miguel',email:'maliaga.pantoja@gmail.com'});
         }
     });
 });
-
 function msbot(msj){
     var te=time();
     $(".all").append("<div class='bot'><div class='bimg'><img src='img/komo7.jpg'></div><div class='text'>"+msj+"</div><div class='date'>"+te+"</div></div>");
