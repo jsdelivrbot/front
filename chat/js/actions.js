@@ -28,13 +28,13 @@ function Chat(){
      }
 }
 function Actions (){
-    function login(user){
+    function login(user,cb){
         var url =JSON.parse(window.localStorage.dilooApp);
         var origin  = url.o;
         var company = url.c;    
         console.log(url)    
         if(user.name && user.email && origin && company ){
-            $.ajax({
+           var request= $.ajax({
                 url:window.serverIp + '/integrations/createuser'
                 ,data:{
                     name       : user.name
@@ -44,7 +44,14 @@ function Actions (){
                 }
                 ,method:"POST"
             });
-            console.log("ok");
+        // Callback handler that will be called on success
+        request.done(function (response, textStatus, jqXHR){
+            cb({status:200})
+        });
+        // Callback handler that will be called on failure
+        request.fail(function (jqXHR, textStatus, errorThrown){
+            cb({status:500});
+        });
         }else{
             return {error:'invalid params',success:false}
         }

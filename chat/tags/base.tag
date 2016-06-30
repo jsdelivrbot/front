@@ -5,7 +5,7 @@
 		<input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE">
 	</div>
 	<div class="input-field col s6">
-		<input id="last_name" name="last_name" type="text" class="validate" placeholder="EMAIL">
+		<input id="last_name" name="last_name" type="email" class="validate" placeholder="EMAIL">
 	</div><br>
 	<center>
 		<button style="margin-left: 5px;color: white;" type="submit" class="waves-effect waves-light btn">Iniciar chat</button>
