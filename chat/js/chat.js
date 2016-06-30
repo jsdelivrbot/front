@@ -52,15 +52,16 @@ function validarEmail() {
            setTimeout(function(){
             base.unmount();
         },2000)
-           
-           riot.mount('chat');
            var actions = new Actions();
            var usr = $('#user').val();
-           //var usr = document.getElementById('user').value;
-           //var lastname = document.getElementById('last_name').value;
            var lastname = $('#last_name').val();
-           console.log(usr + "--" + lastname);
-           actions.login({name:usr,email:lastname});
+           actions.login({name:usr,email:lastname},function(resp){
+               if(resp.status == 200){
+                   riot.mount('chat');
+               }else{
+                   alert('ha ocurrido un error inesperado ');
+               }
+           });
 
         }
     });
