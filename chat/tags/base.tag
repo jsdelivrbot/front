@@ -1,5 +1,5 @@
 <base>
-<form method="POST" id="fca">
+
 	<div class="formulario">				
 		<div class="input-field col s6">				 
 			<input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE">
@@ -14,12 +14,14 @@
 			Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones
 		</p>
 	</div>
-</form>
+
 <center><span class="foot">powered by diloo</span></center>
 <script>
+
 $("#fca").on('submit',function(){
     e.preventDefault();
-	alert('s')
+    alert("aja!");
+    //console.log("si paso");
     var name = $('#user').val();
     var email = $('#last_name').val();
     expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
