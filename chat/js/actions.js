@@ -1,4 +1,4 @@
-window.serverIp = "http://192.168.1.17:1337";
+window.serverIp = "http://192.168.1.10:1337";
 function Chat(){
      var socket = io.connect("http://dilooapp.com:3000");
      function join(room){
