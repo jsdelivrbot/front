@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	*{
+	margin: 0px;
+	padding: 0px;
+}/* El id que utilizare es -- diloo-wjs -- */
+
+html,body{
+	width: 100%;
+	height:100%;
+	position: absolute;
+	background-color: transparent !important;
+}
+	
+</style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>chat</title>
@@ -55,6 +69,25 @@
 		riot.compile(function(){
 			base = riot.mount('base')[0]
 		});
+		setTimeout(function(){
+	    $('.btn-msj').trigger('mouseover');
+		     setTimeout(function(){
+		        $('.btn-msj').trigger('mouseout');
+		     },2000)
+		},1000)
+		function addclass(){
+		$('#d').removeClass('chat-large');
+		$('#d').addClass('chat-larges');
+		$('.btn-msj').trigger('destroy');
+		$('#chat').hide();
+		$('.start-chat').removeClass('off');
+		$('.btn-msj').trigger('mouseout');
+	}function rmclass(){
+		$('#d').removeClass('chat-larges');
+		$('#d').addClass('chat-large');
+		$('#chat').show();
+		$('.start-chat').addClass('off');
+	}
 	</script>
 </body>
 </html>
