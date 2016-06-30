@@ -43,20 +43,8 @@ function Actions (){
                     ,createdBy : company
                 }
                 ,method:"POST"
-                ,success:function(data){
-                    if(data.error){
-                        
-                    }else if(data.result.length){
-                        var token = JSON.stringify(data.result[0]);
-                        window.localStorage.dilooUser = token;
-                        console.log('ok');
-                        start();
-                        return {error:null,success:true}
-                    }else{
-                        
-                    }
-                }
-            })
+            });
+            console.log("ok");
         }else{
             return {error:'invalid params',success:false}
         }

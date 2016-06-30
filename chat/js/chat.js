@@ -45,10 +45,20 @@ return t;
            console.log("Usuario login");      
            //start();
            event.preventDefault();
-           $('base').remove();
-           riot.mount('chat')
+           $('base').addClass('off');
+           setTimeout(function(){
+            base.unmount();
+        },2000)
+           
+           riot.mount('chat');
            var actions = new Actions();
-           actions.login({name:'miguel',email:'maliaga.pantoja@gmail.com'});
+           var usr = $('#user').val();
+           //var usr = document.getElementById('user').value;
+           //var lastname = document.getElementById('last_name').value;
+           var lastname = $('#last_name').val();
+           console.log(usr + "--" + lastname);
+           actions.login({name:usr,email:lastname});
+
         }
     });
 });

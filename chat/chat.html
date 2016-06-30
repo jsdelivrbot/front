@@ -53,7 +53,10 @@
 	<script type="riot/tag" src="tags/base.tag"></script>
 	<script type="riot/tag" src="tags/chat.tag"></script>
 	<script type="text/javascript">
-		riot.mount('base');
+		var base  = {} ; 
+		riot.compile(function(){
+			base = riot.mount('base')[0]
+		});
 	</script>
 </body>
 </html>
