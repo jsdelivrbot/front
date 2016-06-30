@@ -8,13 +8,12 @@
 		<input id="last_name" name="last_name" type="text" class="validate" placeholder="EMAIL">
 	</div><br>
 	<center>
-		<button style="margin-left: 5px;color: white;" type="submit" class="waves-effect waves-light btn">Iniciar chat</button>
+		<button style="margin-left: 5px;color: white;" type="button" class="waves-effect waves-light btn" onclick="validarEmail();">Iniciar chat</button>
 	</center><br>
 	<p class="term">
 		Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones
 	</p>
 </div>
-
 <br>
 <center><span class="foot">powered by diloo</span></center>
 </base>

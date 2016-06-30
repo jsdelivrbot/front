@@ -28,18 +28,21 @@ var t=hora+":"+minuto;
 //$('.date').text(t);
 return t;
 }
- $(function() {
-    // Setup form validation on the #register-form element
-    $("#fca").validate({
+function validarEmail() {
+  event.preventDefault();
+    var email = $('#last_name').val();
+    expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if ( !expr.test(email) )
+        {alert("Error: La dirección de correo " + email + " es incorrecta.");}
+      else{
+         $("#fca").validate({
         // Specify the validation rules
         rules: {
-            user: "required",
-            last_name:"required"
+            user: "required"
         },      
         // Specify the validation error messages
         messages: {
-            user: "Ingrese 1 digito mínimo",
-            last_name: "Inrese un correo válido",            
+            user: "Ingrese 1 digito mínimo"            
         },
         submitHandler: function(form) {
            console.log("Usuario login");      
@@ -61,7 +64,8 @@ return t;
 
         }
     });
-});
+      }
+}
 function msbot(msj){
     var te=time();
     $(".all").append("<div class='bot'><div class='bimg'><img src='img/komo7.jpg'></div><div class='text'>"+msj+"</div><div class='date'>"+te+"</div></div>");
