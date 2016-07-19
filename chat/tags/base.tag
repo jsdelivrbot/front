@@ -9,10 +9,10 @@
 		</div><br>
 		<center>
 			<button style="margin-left: 5px;color: white;" type="submit" class="waves-effect waves-light btn">Iniciar chat</button>
-		</center><br>
+		</center><br><br>
 		<p class="term">
 			Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones
-		</p>
+		</p><br>
 	</div>
 	<center><span class="foot">powered by diloo</span></center>
 </form>
