@@ -1,105 +1,66 @@
-window.serverIp = "http://192.168.1.10:1337";
-function Chat(){
-     var socket = io.connect("http://dilooapp.com:3000");
-     function join(room){
-        socket.emit('join',room,function(data){
-            console.log(data);
-        });       
-     }
-     function onMessage(message){
-         
-     }
-     function sendMessage(message){
-         
-     }
-     function createTicket(){
-         
-     }
-     function connect(){
-         socket.on('connected',function(){
-            console.log('connected'); 
-         });
-     }
-     return {
-         join         : join
-         ,onMessage   : onMessage
-         ,sendMessage : sendMessage
-         ,connect     : connect()
-     }
-}
-function Actions (){
-    function login(user,cb){
-        var url =JSON.parse(window.localStorage.dilooApp);
-        var origin  = url.o;
-        var company = url.c;    
-        console.log(url)    
-        if(user.name && user.email && origin && company ){
-           var request= $.ajax({
-                url:window.serverIp + '/integrations/createuser'
-                ,data:{
-                    name       : user.name
-                    ,email     : user.email
-                    ,origin    : origin
-                    ,createdBy : company
+function DilooApp (){
+    var socket ;
+    var locals = JSON.parse(window.localStorage.dilooApp);
+    locals.ticket = '';    
+    var serverIp = "http://localhost:1337";
+        
+    return {
+        User:{
+            login:function login(user,cb){ 
+                if(user.name && user.email && locals.o && locals.c ){
+                    var request= $.ajax({
+                            url:serverIp + '/integrations/createuser'
+                            ,data:{
+                                name       : user.name
+                                ,email     : user.email
+                                ,origin    : locals.o
+                                ,createdBy : locals.c
+                            }
+                            ,method:"POST"
+                        });
+                    // Callback handler that will be called on success
+                    request.done(function (response, textStatus, jqXHR){
+                        window.localStorage.dilooUser = JSON.stringify(response.result[0]);
+                        cb({status:200});
+                    });
+                    // Callback handler that will be called on failure
+                    request.fail(function (jqXHR, textStatus, errorThrown){
+                        cb({status:500});
+                    });
+                }else{
+                    return {error:'invalid params',success:false}
                 }
-                ,method:"POST"
-            });
-        // Callback handler that will be called on success
-        request.done(function (response, textStatus, jqXHR){
-            cb({status:200})
-        });
-        // Callback handler that will be called on failure
-        request.fail(function (jqXHR, textStatus, errorThrown){
-            cb({status:500});
-        });
-        }else{
-            return {error:'invalid params',success:false}
+            }            
+        },
+        Chat:{
+            connect:function(){
+                socket = io.connect(serverChat);
+                this.listeners();
+            }
+
+            ,ticket:{
+                create:function(message){
+                    var user = JSON.parse(window.localStorage.dilooUser)
+                    socket.emit('create_ticketV2',{
+                        message  : message 
+                        ,company : locals.c
+                        ,session : user.sessionid
+                        ,type    : locals.o
+                    });
+                
+                }
+                ,sendMessage:function(message){
+                    var user = JSON.parse(window.localStorage.dilooUser)
+                    var data =JSON.parse(window.localStorage.dilooApp);
+                    socket.emit('send_message_web',{
+                        type:'nuevoSender'
+                        ,senderId:user.sessionid
+                        ,ticket:data.ticket
+                        ,message:message
+                    });
+                }
+            }
         }
-
     }
-    function createTicket(message){
-        var url =JSON.parse(window.localStorage.dilooApp);
-        var origin  = url.o;
-        var company = url.c;
-        var users = JSON.parse(window.localStorage.dilooUser);
-        var sesionid=users.sessionid;
-        var msj = document.getElementById('msm');
-        console.log(url)    
-        if(origin && company && sesionid && msj){
-            $.ajax({
-                url:window.serverIp + '/integrations/createTickets'
-                ,data:{
-                    message       : msj
-                    ,companyId    : company
-                    ,sessionId    : sesionid
-                    ,areaId       : "1"
-                    ,type         : origin
-                }
-                ,method:"POST"
-                ,success:function(data){
-                    console.log(data);
-                    if(data.error){
-                       console.log(data); 
-                    }else if(data.result.length){
-                        var token = JSON.stringify(data.result[0]);
-                        window.localStorage.dilooUser = token;
-                        console.log('ok');
-                        start();
-                        return {error:null,success:true}
-                    }else{
-                        
-                    }
-                }
-            })
-        }else{
-            console.log('invalid params');
-        }
-
-    }
-    return{
-        login:login
-        ,'createTicket':createTicket
-    }
-}
-
-//actions.login({name:'miguel',email:'maliaga.pantoja@gmail.com'});
+};
+var diloo = new DilooApp();

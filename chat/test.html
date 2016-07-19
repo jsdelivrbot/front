@@ -3,33 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body style="background-color: red;">
-	<script>
-        (function(d,s,id,c,o){
-            var script,initialScript;
-            initialScript=d.getElementsByTagName(s)[0];
-            if(!d.getElementById(id) ){
-                script=d.createElement(s);
-                script.id  = id;
-                script.setAttribute('data-creator',c);
-                script.setAttribute('data-origin',c);
-                script.src = 'http://localhost:8000/widget.js'
-                initialScript.parentNode.insertBefore(script,initialScript);
-                var credentials = {
-                    c:c
-                    ,o:o
-                }
-                window.localStorage.dilooApp = JSON.stringify(credentials)
-                
-            }else{
-                console.error('some element has our registered id')
+<script>
+    (function(d,s,id,c,o){
+        var script,initialScript;
+        initialScript=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id) ){
+            script=d.createElement(s);
+            script.id  = id;
+            script.setAttribute('data-creator',c);
+            script.setAttribute('data-origin',c);
+            script.src = 'http://'+window.location.host+'/widget.js'
+            initialScript.parentNode.insertBefore(script,initialScript);
+            var credentials = {
+                c:c
+                ,o:o
             }
-        })(document,"script","diloo-wjs","086561f8-5c34-490d-b6b3-30455892e02c","web")
-    </script>
-    
-    
-    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
-    <script src="js/actions.js"></script>
+            window.localStorage.dilooApp = JSON.stringify(credentials)
+            
+        }else{
+            console.error('some element has our registered id')
+        }
+    })(document,"script","diloo-wjs","36917749-b05d-409a-8e70-265fd1f1c3a2","web")
+</script>
 </body>
 </html>

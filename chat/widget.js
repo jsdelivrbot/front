@@ -8,5 +8,7 @@
     iFrame.style.position = 'fixed';
     iFrame.style.bottom = '0px';
     iFrame.style.right  = '0px';
-    d.body.appendChild(iFrame);
+    var div = d.createElement('div');
+    div.appendChild(iFrame);
+    d.body.appendChild(div);
 })(document,"iframe");

@@ -1,8 +1,7 @@
-*{
+	*{
 	margin: 0px;
 	padding: 0px;
 }/* El id que utilizare es -- diloo-wjs -- */
-
 html,body{
 	width: 100%;
 	height:100%;
@@ -79,6 +78,17 @@ html,body{
 	margin-left: 50px;
 	top: 13px;
     position: absolute;
+}
+.logo{
+	display:inline-block;
+	margin-left: 50px;
+}
+.logo img{
+	height:24px;
+}
+#name img{
+	height: 40px;
+	margin:0 auto;
 }
 #header .userico img{
 	margin-left: 3px;
@@ -181,13 +191,8 @@ html,body{
 	overflow-y: scroll;
 	height: 86%;
 }
-.bot{
-	/*border: 1px solid;*/
-	height: auto;
-	padding: 5px;
-}
-.user{
-	/*border: 1px solid;*/
+.reciber, .nuevoSender{
+	word-break: break-all;
 	height: auto;
 	padding: 5px;
 }

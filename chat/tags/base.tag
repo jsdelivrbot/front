@@ -1,5 +1,5 @@
 <base>
-	<form onsubmit={send}> 
+<form onsubmit={send}> 
 	<div class="formulario">				
 		<div class="input-field col s6">				 
 			<input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE">
@@ -15,22 +15,22 @@
 		</p>
 	</div>
 	<center><span class="foot">powered by diloo</span></center>
-	</form>
+</form>
 <script>
 	send (e) {
 		e.preventDefault();
 		var name  = this.user.value ;
 		var email = this.last_name.value; 
-		console.log(name,email)
 		var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		if(name.trim().length > 1){
 			//nombre válido
 			if ( expr.test(email) ){
 				//email válido
-				var actions = new Actions();
-				actions.login({name:name,email:email},function(resp){
+				diloo.User.login({name:name,email:email},function(resp){
 					if(resp.status == 200){
+						//remove login
 						base.unmount();
+						//mount chat view
 						riot.mount('chat');
 					}else{
 						alert('ha ocurrido un error inesperado ');

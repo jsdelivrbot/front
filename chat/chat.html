@@ -1,70 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-	*{
-	margin: 0px;
-	padding: 0px;
-}/* El id que utilizare es -- diloo-wjs -- */
-
-html,body{
-	width: 100%;
-	height:100%;
-	position: absolute;
-	background-color: transparent !important;
-}
-	
-</style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>chat</title>
 	<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="component/semantic/semantic.min.css">
-  <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" type="text/css" href="css/chat.css">
-	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-	<script type="text/javascript" src="js/actions.js"></script>
-	<script type="text/javascript" src="js/chat.js"></script>
-	<script  type = "text/javascript"  src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js" ></script>
-	  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-  <script type="text/javascript" src="component/semantic/semantic.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="component/semantic/semantic.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/chat.css">
 </head>
 <body>
-<div class="chat-large" id="d" >
-	<div class="form-group" id="fc" style="height: 100%;">
-		<div id="header" class="col s12 m2">
-			<div class="hbody">
-				<div class="userico">
-					<img src="img/msj.png">
-				</div>
-				<span id="name">Texto - nombre usuario</span>
-				<div class="min" onclick="rmclass();">
-					<span id="mico">
-						<strong>__</strong>
+	<div class="chat-large" id="d" >
+		<div class="form-group" id="fc" style="height: 100%;">
+			<div id="header" class="col s12 m2">
+				<div class="hbody">
+					<div class="userico">
+						<img src="img/iso_dilo.png">
+					</div>
+					<span id="name">
+						Chat en vivo
 					</span>
-				</div> 				
+					<div class="min" onclick="rmclass();">
+						<span id="mico">
+							<strong>__</strong>
+						</span>
+					</div> 				
+				</div>
+			</div>
+			<div class="body">		
+				<base></base>
+				<chat></chat>
 			</div>
 		</div>
-		<div class="body">		
-			<base></base>
-			<chat></chat>
-		</div>
 	</div>
-</div>
-<div id="chat" onclick="addclass();" class="btn-msj" data-content="Bienvenido a Olo, ¿Tienes alguna duda?">
-	<img src="img/msj.png">
-</div>
-<script type="text/javascript">	
-		$('.btn-msj').popup({
-			position: 'right center'
-		});
-</script>
+	<div id="chat" onclick="addclass();" class="btn-msj" data-content="Bienvenido a Olo, ¿Tienes alguna duda?">
+		<img src="img/msj.png">
+	</div>
+	
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	
+	<!-- Compiled and minified JavaScript -->
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  	<script type="text/javascript" src="component/semantic/semantic.min.js"></script>	
+	
+	<script type="text/javascript" src="js/actions.js"></script>
+		
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<script type="text/javascript" src="js/riot+compiler.min.js"></script>
 	<script type="riot/tag" src="tags/base.tag"></script>
 	<script type="riot/tag" src="tags/chat.tag"></script>
 	<script type="text/javascript">
+		
 		var base  = {} ; 
 		riot.compile(function(){
 			base = riot.mount('base')[0]
@@ -74,20 +61,26 @@ html,body{
 		     setTimeout(function(){
 		        $('.btn-msj').trigger('mouseout');
 		     },2000)
-		},1000)
+		},1000);
+
+		$('.btn-msj').popup({
+			position: 'right center'
+		});
+		
 		function addclass(){
-		$('#d').removeClass('chat-large');
-		$('#d').addClass('chat-larges');
-		$('.btn-msj').trigger('destroy');
-		$('#chat').hide();
-		$('.start-chat').removeClass('off');
-		$('.btn-msj').trigger('mouseout');
-	}function rmclass(){
-		$('#d').removeClass('chat-larges');
-		$('#d').addClass('chat-large');
-		$('#chat').show();
-		$('.start-chat').addClass('off');
-	}
+			$('#d').removeClass('chat-large');
+			$('#d').addClass('chat-larges');
+			$('.btn-msj').trigger('destroy');
+			$('#chat').hide();
+			$('.start-chat').removeClass('off');
+			$('.btn-msj').trigger('mouseout');
+		}
+		function rmclass(){
+			$('#d').removeClass('chat-larges');
+			$('#d').addClass('chat-large');
+			$('#chat').show();
+			$('.start-chat').addClass('off');
+		}
 	</script>
 </body>
 </html>
