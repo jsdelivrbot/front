@@ -7,7 +7,7 @@
    // iFrame.setAttribute('height',355);
     iFrame.style.width = '100%';
     iFrame.style.height = '100%';
-    iFrame.style.position = 'fixed';
+    iFrame.style.position = 'absolute';
     iFrame.style.bottom = '0px';
     iFrame.style.right  = '0px';
     var div = d.createElement('div');
