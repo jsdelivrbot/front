@@ -1,4 +1,4 @@
-	*{
+*{
 	margin: 0px;
 	padding: 0px;
 }/* El id que utilizare es -- diloo-wjs -- */
@@ -123,8 +123,8 @@ html,body{
 	/*border: 1px solid black;*/
 	width: 300px;
 	height: 350px;
-	right: 0px;
-	bottom: 0px;
+	right: 5px;
+	bottom: 5px;
     -webkit-transform: scale(1);
     transform: scale(1);
    
