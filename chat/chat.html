@@ -7,10 +7,16 @@
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="component/semantic/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="component/semantic/components/popup.min.css">
 	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/TLite.css">
 	<link rel="stylesheet" type="text/css" href="css/chat.css">
+	
+	<style type="riot"></style>
 </head>
 <body>
+	<chatwindow></chatwindow>
+<!--	
 	<div class="chat-large" id="d" >
 		<div class="form-group" id="fc" style="height: 100%;">
 			<div id="header" class="col s12 m2">
@@ -35,22 +41,36 @@
 		</div>
 	</div>
 	<div id="chat" onclick="addclass();" class="btn-msj" data-content="Bienvenido a Olo, ¿Tienes alguna duda?">
-		<img src="img/msj.png">
+		<img src="img/burbuja_0007_chat01.png">
 	</div>
-	
+-->
 	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-	
+	<script type="text/javascript" src="js/TLite.min.js"></script>
 	<!-- Compiled and minified JavaScript -->
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-  	<script type="text/javascript" src="component/semantic/semantic.min.js"></script>	
+  	<script type="text/javascript" src="component/semantic/semantic.min.js"></script>
+	<script type="text/javascript" src="component/semantic/components/popup.min.js"></script>	
 	
-	<script type="text/javascript" src="js/actions.js"></script>
+	<!--<script type="text/javascript" src="js/actions.js"></script>-->
 		
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<script type="text/javascript" src="js/riot+compiler.min.js"></script>
+	<script type="riot/tag" src="tags/chatwindow.tag"></script>
+	<script type="riot/tag" src="tags/bubble.tag"></script>
+	<script>
+		var chatWindow = {};
+		riot.compile(function(){
+			chatWindow = riot.mount('chatwindow')[0];
+		});
+		$('body').delegate('.btn-msj','click',function(){
+			tlite.show(this, { grav: 'w' });	
+		});
+	</script>
+	<!--
 	<script type="riot/tag" src="tags/base.tag"></script>
 	<script type="riot/tag" src="tags/chat.tag"></script>
-	<script type="text/javascript">
+
+		<script type="text/javascript">
 		
 		var base  = {} ; 
 		riot.compile(function(){
@@ -82,5 +102,6 @@
 			$('.start-chat').addClass('off');
 		}
 	</script>
+	-->
 </body>
 </html>

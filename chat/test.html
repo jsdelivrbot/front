@@ -21,7 +21,11 @@
                 c:c
                 ,o:o
             }
-            window.localStorage.dilooApp = JSON.stringify(credentials)
+            if(window.localStorage.dilooApp){
+                return;
+            }else{
+               window.localStorage.dilooApp= JSON.stringify(credentials)
+            }
             
         }else{
             console.error('some element has our registered id')
