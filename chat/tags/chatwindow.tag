@@ -1,5 +1,6 @@
-<chatwindow>
-    <bubble company="{company}" onclick={unmount}></bubble>
+<chatwindow name="chat_window" class="chat-larges">
+    <login name="login_tag" class="none"></login>
+    <bubble name="bubble_tag" company="{company}" onclick={unmounte} ></bubble>
     <script>
         var self = this;
     	var locals = JSON.parse(window.localStorage.dilooApp);
@@ -13,10 +14,13 @@
             ,disconnectedMessage : ''
             ,isConnected : true
             ,showMessageIn : 2.5
-        }  
-        unmount (){
-            var bubble = this.tags.bubble;
+        }
+        unmounte (){
+            //console.log(this.tags)
+            var bubble = this.tags.bubble_tag;
             bubble.unmount();
+            self.root.querySelector('login').setAttribute('class','show');
+            self.root.querySelector('login').setAttribute('style','background-color:#E8E4D2');
         }
         initmessage(){
             $.get({
