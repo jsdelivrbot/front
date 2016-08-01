@@ -1,5 +1,5 @@
 <chatwindow>
-    <bubble company="{company}"></bubble>
+    <bubble company="{company}" onclick={unmount}></bubble>
     <script>
         var self = this;
     	var locals = JSON.parse(window.localStorage.dilooApp);
@@ -14,6 +14,10 @@
             ,isConnected : true
             ,showMessageIn : 2.5
         }  
+        unmount (){
+            var bubble = this.tags.bubble;
+            bubble.unmount();
+        }
         initmessage(){
             $.get({
                 "url":"http://localhost:1337/company?id="+locals.c

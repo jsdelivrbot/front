@@ -1,5 +1,5 @@
 <bubble>
-    <div class="btn-msj" id="chat" title={ if company.isConnected == 1 ? company.connectedMessage : company.disconnectedMessage }>
+    <div onclick={unmount} class="btn-msj" id="chat" title={ if company.isConnected == 1 ? company.connectedMessage : company.disconnectedMessage }>
         <img src={ opts.company.buble.image }>
 	</div>
     <style>
@@ -12,5 +12,8 @@
         }    
     </style>
     <script>
+        unmount (){
+            this.unmount(true);
+        }
     </script>
 </bubble>
