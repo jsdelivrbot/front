@@ -20,8 +20,12 @@ function DilooApp (){
                         });
                     // Callback handler that will be called on success
                     request.done(function (response, textStatus, jqXHR){
-                        window.localStorage.dilooUser = JSON.stringify(response.result[0]);
-                        cb({status:200});
+                        if(response.error ){
+                            alert(response.error);
+                        }else{
+                            window.localStorage.dilooUser = JSON.stringify(response.result[0]);
+                            cb({status:200});
+                        }
                     });
                     // Callback handler that will be called on failure
                     request.fail(function (jqXHR, textStatus, errorThrown){

@@ -4,7 +4,7 @@
 		<div each = { messages } class={ type } >
 			<div class="wrapper" if={ type=="reciber" }>
 				<div class="bimg">
-					<img src="img/komo7.jpg">
+					<img src={ company.image }>
 				</div>
 				<div class="text">
 					{ body }
@@ -29,8 +29,35 @@
 	var socket = io.connect(serverChat);
 	var self = this;
 	var locals = JSON.parse(window.localStorage.dilooApp);
+	self.company ={
+		image : ''
+	}
 	self.messages = [] ;
 	
+	initmessage(){
+		$.get({
+			"url":"http://localhost:1337/company?id="+locals.c
+		})
+		.done(function(data){
+			console.log(data);
+			self.company.image = data.image;
+			if(data.isConnected == 1){
+				self.messages.push({
+					body:data['defaultMessage']
+					,type:'reciber'
+				});
+			}else{
+				self.messages.push({
+					body:data['disconnectedMessage']
+					,type:'reciber'
+				});				
+			}
+			self.update();
+		})
+		.fail(function(e){
+			console.log(e);
+		})
+	}
 	createTicket(message){
 		var user = JSON.parse(window.localStorage.dilooUser)
 		socket.emit('create_ticketV2',{
@@ -57,6 +84,7 @@
 		})
 		socket.on('created_ticketV2',function(resp){
 			//socket.emit('join','ticket:'+resp.id);
+			console.log(resp);
 			var data =JSON.parse(window.localStorage.dilooApp);
 			data.ticket = resp.id;
 			window.localStorage.dilooApp = JSON.stringify(data);
@@ -105,6 +133,7 @@
 	}
 	this.on('mount',function(){
 		this.listeners();
+		this.initmessage();
 	})
 </script>
 </chat>

@@ -17,6 +17,37 @@
 	<center><span class="foot">powered by diloo</span></center>
 </form>
 <script>
+	var locals = JSON.parse(window.localStorage.dilooApp);
+	var self = this;
+	self.company ={
+		image : ''
+	}
+	initmessage(){
+		$.get({
+			"url":"http://localhost:1337/company?id="+locals.c
+		})
+		.done(function(data){
+			console.log(data);
+			self.company.image = data.image;
+			/*
+			if(data.isConnected == 1){
+				self.messages.push({
+					body:data['defaultMessage']
+					,type:'reciber'
+				});
+			}else{
+				self.messages.push({
+					body:data['disconnectedMessage']
+					,type:'reciber'
+				});				
+			}
+			*/
+			self.update();
+		})
+		.fail(function(e){
+			console.log(e);
+		})
+	}
 	send (e) {
 		e.preventDefault();
 		var name  = this.user.value ;
@@ -43,5 +74,8 @@
 			alert('nombre demasiado corto');
 		}		
 	}
+	this.on('mount',function(){
+		this.initmessage();
+	})	
 </script>
 </base>
