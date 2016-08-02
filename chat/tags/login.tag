@@ -1,17 +1,4 @@
 <login>
-<div id="header" class="col s12 m2">
-	<div class="hbody">
-		<div class="userico"></div>
-		<span id="name">
-			Chat en vivo
-		</span>
-		<div class="min" onclick={rmclass}>
-			<span id="mico">
-				<strong>__</strong>
-			</span>
-		</div> 				
-	</div>
-</div>
 <form onsubmit={send} class="fc"> 
 	<div class="formulario">				
 		<div class="input-field col s6">				 
@@ -34,9 +21,6 @@
 <script>
 	var locals = JSON.parse(window.localStorage.dilooApp);
 	var self = this;
-	rmclass(){
-    	this.root.setAttribute('class','none');
-    }
 	self.company ={
 		image : ''
 	}

@@ -1,10 +1,30 @@
-<chatwindow class="chat-larges">
-    <bubble name="bubble_tag" company="{company}" onclick={unmounte}></bubble>
+<chatwindow class="chat-larges">    
+<bubble name="bubble_tag" company="{company}" onclick={unmounte}></bubble>
+<div id="allchat" name="allchat" class="none">
+<div id="header" >
+    <div class="hbody">
+        <div class="userico"></div>
+        <span id="name">
+            Chat en vivo
+        </span>
+        <div class="min" onclick={rmclass}>
+            <span id="mico">
+                <strong>__</strong>
+            </span>
+        </div>              
+    </div>
+</div>
     <login name="login_tag" class="none"></login>
+</div>
     <script>
         var self = this;
     	var locals = JSON.parse(window.localStorage.dilooApp);
         self.messages = [] ;
+            rmclass(){
+                this.root.querySelector('#allchat').setAttribute('class','none');
+                self.root.setAttribute('style','background-color:none');
+                self.root.querySelector('bubble').setAttribute('class','show');
+            }
         self.company ={ 
             buble:{
                 image : "img/burbuja_0007_chat01.png"
@@ -19,9 +39,10 @@
             //console.log(this.tags)
             //var bubble = this.tags.bubble_tag;
             //bubble.unmount();
+            self.root.querySelector('#allchat').setAttribute('class','show');
             self.root.querySelector('bubble').setAttribute('class','none');
-            self.root.querySelector('login').setAttribute('class','show');
-            self.root.querySelector('login').setAttribute('style','background-color:#E8E4D2');
+            self.root.querySelector('login').setAttribute('class','shows');
+            self.root.setAttribute('style','background-color:#E8E4D2');
         }
         initmessage(){
             $.get({
