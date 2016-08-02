@@ -14,7 +14,7 @@
 	
 	<style type="riot"></style>
 </head>
-<body>
+
 	<chatwindow></chatwindow>
 <!--	
 	<div class="chat-large" id="d" >
@@ -57,6 +57,8 @@
 	<script type="text/javascript" src="js/riot+compiler.min.js"></script>
 	<script type="riot/tag" src="tags/chatwindow.tag"></script>
 	<script type="riot/tag" src="tags/bubble.tag"></script>
+	<script type="riot/tag" src="tags/login.tag"></script>
+	<script type="riot/tag" src="tags/chat.tag"></script>
 	<script>
 		var chatWindow = {};
 		riot.compile(function(){
@@ -64,7 +66,7 @@
 		});
 		$('body').delegate('.btn-msj','click',function(){
 			tlite.show(this, { grav: 'w' });	
-		});
+		});    
 	</script>
 	<!--
 	<script type="riot/tag" src="tags/base.tag"></script>
@@ -103,5 +105,5 @@
 		}
 	</script>
 	-->
-</body>
+
 </html>

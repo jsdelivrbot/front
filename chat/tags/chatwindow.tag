@@ -1,10 +1,11 @@
-<chatwindow>
-    <bubble company="{company}" onclick={unmount}></bubble>
+<chatwindow class="chat-larges">
+    <bubble name="bubble_tag" company="{company}" onclick={unmounte}></bubble>
+    <login name="login_tag" class="none"></login>
     <script>
         var self = this;
     	var locals = JSON.parse(window.localStorage.dilooApp);
         self.messages = [] ;
-        self.company ={
+        self.company ={ 
             buble:{
                 image : "img/burbuja_0007_chat01.png"
             }
@@ -13,10 +14,14 @@
             ,disconnectedMessage : ''
             ,isConnected : true
             ,showMessageIn : 2.5
-        }  
-        unmount (){
-            var bubble = this.tags.bubble;
-            bubble.unmount();
+        }
+        unmounte (){
+            //console.log(this.tags)
+            //var bubble = this.tags.bubble_tag;
+            //bubble.unmount();
+            self.root.querySelector('bubble').setAttribute('class','none');
+            self.root.querySelector('login').setAttribute('class','show');
+            self.root.querySelector('login').setAttribute('style','background-color:#E8E4D2');
         }
         initmessage(){
             $.get({
@@ -45,6 +50,6 @@
         this.on('mount',function(){
             //this.listeners();
             //this.initmessage();
-        });    
+        });
     </script>    
 </chatwindow>
