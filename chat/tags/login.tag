@@ -12,7 +12,7 @@
 		<!--<div class="input-field col s6">
 			<textarea name="msg" id="msg" placeholder="Mensaje"></textarea>
 			<span id="vmsg" class="none">*Direccion de correo inválido</span>
-		</div>-->
+		</div>-->	
 		<center id="top">
 			<button style="margin-left: 5px;color: white;" type="submit" class="waves-effect waves-light btn">Iniciar chat</button>
 		</center>
@@ -24,7 +24,6 @@
 </form>
 <chat name="chat_tag" id="chat_tag" class="none"></chat>
 <script>
-   
 	var locals = JSON.parse(window.localStorage.dilooApp);
 	var self = this;
         if (locals.ticket){
@@ -81,21 +80,14 @@
 						//remove login
 						self.root.querySelector('form').setAttribute('class','none');
 						self.root.querySelector('chat').setAttribute('class','show');
-						//mount chat view
-						//riot.mount('chat');
-						//alert('Not bad!');
-
-						//desmount();
 					}else{
 						alert('ha ocurrido un error inesperado ');
 					}
 				});           
 			}else{
-				//alert("Error: La dirección de correo " + email + " es incorrecta."); 
 				this.emailv.setAttribute('class','show');
 			}
 		}else{
-			//alert("Error: nombre demasiado corto");
 			this.nombrev.setAttribute('class','show');
 		}		
 	}

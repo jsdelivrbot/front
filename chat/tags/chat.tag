@@ -12,7 +12,8 @@
 			</div>	
 			<div class="wrapper" if={ type=="nuevoSender" }>
 				<div class="utext">
-					{ body } 
+					{ body }
+					<span style="font-size: 8px;position: absolute;right: 2px;">{ time() }</span> 
 				</div>		
 			</div>							
 		</div>	
@@ -25,7 +26,7 @@
 </div>
 <script>
 
-	var serverChat ="http://192.168.1.45:3000";
+	var serverChat ="http://192.168.1.45:4050";
 	var socket = io.connect(serverChat);
 	var self = this;
 	var locals = JSON.parse(window.localStorage.dilooApp);
@@ -60,11 +61,12 @@
 	}
 	createTicket(message){
 		var user = JSON.parse(window.localStorage.dilooUser)
-		socket.emit('create_ticketV2',{
-			message  : message 
-			,company : locals.c
-			,session : user.sessionid
-			,type    : locals.o
+		socket.emit('createTicket',{
+			message  	: message 
+			,companyId 	: locals.c
+			,userId 	: user.userid
+			,areaId		:'1'
+			,type    	: locals.o
 		});
 	
 	}	
@@ -82,7 +84,7 @@
 		socket.on('connected',function(){
 			console.log('connected')
 		})
-		socket.on('created_ticketV2',function(resp){
+		socket.on('rsp_createTicket',function(resp){
 			//socket.emit('join','ticket:'+resp.id);
 			console.log(resp);
 			var data =JSON.parse(window.localStorage.dilooApp);
@@ -119,7 +121,7 @@
 		if(storage.ticket){
 			console.log('enviar')
 			this.createMessage(message);
-			document.getElementById('chat-all').scrollTop=5000;
+			document.getElementById('chat-all').scrollTop=6000;
 		}else{
 			console.log('crear')
 			this.createTicket(message);
