@@ -20,6 +20,8 @@
         var self = this;
     	var locals = JSON.parse(window.localStorage.dilooApp);
         self.messages = [] ;
+        //var chatView=this.tags.chat_tag;
+        //chatView.unmount();
             rmclass(){
                 this.root.querySelector('#allchat').setAttribute('class','none');
                 self.root.setAttribute('style','background-color:none');
@@ -46,7 +48,7 @@
         }
         initmessage(){
             $.get({
-                "url":"http://localhost:1337/company?id="+locals.c
+                "url":"http://192.168.1.45:1337/company?id="+locals.c
             })
             .done(function(data){
                 self.company.image = data.image;

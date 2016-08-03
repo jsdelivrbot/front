@@ -1,5 +1,5 @@
 <login>
-<form onsubmit={send} class="fc"> 
+<form onsubmit={send} class="fc" id="formfc"> 
 	<div class="formulario">				
 		<div class="input-field col s6">				 
 			<input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE">
@@ -9,24 +9,38 @@
 			<input id="last_name" name="last_name" type="email" class="validate" placeholder="EMAIL">
 			<span id="emailv" class="none">*Direccion de correo inválido</span>
 		</div>
-		<center>
+		<!--<div class="input-field col s6">
+			<textarea name="msg" id="msg" placeholder="Mensaje"></textarea>
+			<span id="vmsg" class="none">*Direccion de correo inválido</span>
+		</div>-->
+		<center id="top">
 			<button style="margin-left: 5px;color: white;" type="submit" class="waves-effect waves-light btn">Iniciar chat</button>
-		</center><br>
+		</center>
 		<p class="term">
 			Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones
 		</p>
 	</div>
 	<center><span class="foot">powered by diloo</span></center>
 </form>
+<chat name="chat_tag" id="chat_tag" class="none"></chat>
 <script>
+   
 	var locals = JSON.parse(window.localStorage.dilooApp);
 	var self = this;
+        if (locals.ticket){
+        	console.log("ya tienes sesion iniciada");
+        	setTimeout(function	(){
+        		self.root.querySelector('#formfc').setAttribute('class','none');
+        		self.root.querySelector('chat').setAttribute('class','show');
+        	},200);
+        	
+        }else{console.log("sin session");}
 	self.company ={
 		image : ''
 	}
 	initmessage(){
 		$.get({
-			"url":"http://localhost:1337/company?id="+locals.c
+			"url":"http://192.168.1.45:1337/company?id="+locals.c
 		})
 		.done(function(data){
 			console.log(data);
@@ -62,11 +76,16 @@
 			if ( expr.test(email) ){
 				//email válido
 				diloo.User.login({name:name,email:email},function(resp){
+					console.log(resp);
 					if(resp.status == 200){
 						//remove login
-						base.unmount();
+						self.root.querySelector('form').setAttribute('class','none');
+						self.root.querySelector('chat').setAttribute('class','show');
 						//mount chat view
-						riot.mount('chat');
+						//riot.mount('chat');
+						//alert('Not bad!');
+
+						//desmount();
 					}else{
 						alert('ha ocurrido un error inesperado ');
 					}
@@ -76,6 +95,7 @@
 				this.emailv.setAttribute('class','show');
 			}
 		}else{
+			//alert("Error: nombre demasiado corto");
 			this.nombrev.setAttribute('class','show');
 		}		
 	}

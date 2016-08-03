@@ -1,5 +1,5 @@
 <chat>
-<div class="start-chat">
+<div style="width: 100%;height: 260px;">
 	<div class="all" id="chat-all">
 		<div each = { messages } class={ type } >
 			<div class="wrapper" if={ type=="reciber" }>
@@ -25,7 +25,7 @@
 </div>
 <script>
 
-	var serverChat ="http://localhost:3000";
+	var serverChat ="http://192.168.1.45:3000";
 	var socket = io.connect(serverChat);
 	var self = this;
 	var locals = JSON.parse(window.localStorage.dilooApp);
@@ -36,7 +36,7 @@
 	
 	initmessage(){
 		$.get({
-			"url":"http://localhost:1337/company?id="+locals.c
+			"url":"http://192.168.1.45:1337/company?id="+locals.c
 		})
 		.done(function(data){
 			console.log(data);
@@ -109,19 +109,23 @@
 		  socket.emit("join",room);
       });	   			
     }
-	
 	send(e){
 		e.preventDefault()
 		var message  = this.msm.value;
 		var storage = JSON.parse(window.localStorage.dilooApp);
+		if (message==""){
+			console.log('no se encontro mensaje');
+		}else{
 		if(storage.ticket){
 			console.log('enviar')
 			this.createMessage(message);
+			document.getElementById('chat-all').scrollTop=5000;
 		}else{
 			console.log('crear')
 			this.createTicket(message);
 		}
 		this.msm.value = '';
+		}
 	}
 	time(){
 		var tiempo = new Date();

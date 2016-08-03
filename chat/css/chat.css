@@ -86,7 +86,7 @@ html,body{
 }
 #header .userico{
 	border-radius: 50%;
-    margin-top: 10px;
+   /* margin-top: 10px;*/
     margin-bottom: 10px;
     font-size: 12px;
     line-height: 18px;
@@ -98,6 +98,10 @@ html,body{
     display: inline-block;
     /* margin-left: 5px; */
     position: relative;
+}
+#msg{
+	border-radius: 5px;
+	background-color: white;
 }
 #name{
 	margin-left: 75px;
@@ -148,7 +152,7 @@ html,body{
 	position: fixed;
 	/*border: 1px solid black;*/
 	width: 300px;
-	height: 350px;
+	height: 99%;
 	right: 5px;
 	bottom: 5px;
     -webkit-transform: scale(1);
@@ -174,6 +178,10 @@ html,body{
 	font-size: 12px;
 	color: silver	;
 	margin-left: 16px;
+	margin-top: 10px;
+}
+#top{
+	margin-top: 5px;
 }
 .min{
 	width: 18px;
@@ -214,7 +222,7 @@ html,body{
 .all{
 	width: 100%;
 	overflow-y: scroll;
-	height: 86%;
+	height: 100%;
 }
 .reciber, .nuevoSender{
 	word-break: break-all;
@@ -260,10 +268,12 @@ html,body{
 	border-radius: 50%;
 }
 .foot-msj{
-	width: 100%;
-	height: auto;
-	text-align: center;
-	padding: 10px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    top: 10px;
 }
 .foot-msj input[type=text]{
 	width: 100%;
