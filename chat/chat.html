@@ -13,18 +13,14 @@
 	<link rel="stylesheet" type="text/css" href="css/chat.css">
 	<style type="riot"></style>
 </head>
-
 	<chatwindow></chatwindow>
-
 	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="js/TLite.min.js"></script>
 	<!-- Compiled and minified JavaScript -->
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   	<script type="text/javascript" src="component/semantic/semantic.min.js"></script>
-	<script type="text/javascript" src="component/semantic/components/popup.min.js"></script>	
-	
+	<script type="text/javascript" src="component/semantic/components/popup.min.js"></script>
 	<!--<script type="text/javascript" src="js/actions.js"></script>-->
-		
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<script type="text/javascript" src="js/riot+compiler.min.js"></script>
 	<script type="text/javascript" src="js/actions.js"></script>
@@ -41,42 +37,4 @@
 			tlite.show(this, { grav: 'w' });	
 		});    
 	</script>
-	<!--
-	<script type="riot/tag" src="tags/base.tag"></script>
-	<script type="riot/tag" src="tags/chat.tag"></script>
-
-		<script type="text/javascript">
-		
-		var base  = {} ; 
-		riot.compile(function(){
-			base = riot.mount('base')[0]
-		});
-		setTimeout(function(){
-	    $('.btn-msj').trigger('mouseover');
-		     setTimeout(function(){
-		        $('.btn-msj').trigger('mouseout');
-		     },2000)
-		},1000);
-
-		$('.btn-msj').popup({
-			position: 'right center'
-		});
-		
-		function addclass(){
-			$('#d').removeClass('chat-large');
-			$('#d').addClass('chat-larges');
-			$('.btn-msj').trigger('destroy');
-			$('#chat').hide();
-			$('.start-chat').removeClass('off');
-			$('.btn-msj').trigger('mouseout');
-		}
-		function rmclass(){
-			$('#d').removeClass('chat-larges');
-			$('#d').addClass('chat-large');
-			$('#chat').show();
-			$('.start-chat').addClass('off');
-		}
-	</script>
-	-->
-
 </html>

@@ -3,9 +3,11 @@
     iFrame.setAttribute('frameborder',0);
     iFrame.setAttribute('allowtransparency','true');
     iFrame.setAttribute('src','chat.html');
-    iFrame.setAttribute('width',305);
-    iFrame.setAttribute('height',375);
+    //iFrame.setAttribute('width',305);
+    //iFrame.setAttribute('height',375);
     iFrame.style.position = 'fixed';
+    iFrame.style.width='100%';
+    iFrame.style.height='100%';
     iFrame.style.bottom = '0px';
     iFrame.style.right  = '0px';
     var div = d.createElement('div');

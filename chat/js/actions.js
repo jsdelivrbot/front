@@ -45,6 +45,7 @@ function DilooApp (){
             ,ticket:{
                 create:function(message){
                     var user = JSON.parse(window.localStorage.dilooUser)
+                    console.log(user);
                     socket.emit('createTicket',{
                         message  : message 
                         ,company : locals.c

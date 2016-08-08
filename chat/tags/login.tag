@@ -5,9 +5,9 @@
 			<input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE">
 			<span id="nombrev" class="none">*Nombre demasiado corto</span>
 		</div>
-		<div class="input-field col s6">
+		<div class="input-field col s6" id="field-mail">
 			<input id="last_name" name="last_name" type="email" class="validate" placeholder="EMAIL">
-			<span id="emailv" class="none">*Direccion de correo inválido</span>
+			<span id="emailv" class="none">*Direccion de correo inválida</span>
 		</div>
 		<!--<div class="input-field col s6">
 			<textarea name="msg" id="msg" placeholder="Mensaje"></textarea>
@@ -25,9 +25,10 @@
 <chat name="chat_tag" id="chat_tag" class="none"></chat>
 <script>
 	var locals = JSON.parse(window.localStorage.dilooApp);
+	console.log(locals);
 	var self = this;
         if (locals.ticket){
-        	console.log("ya tienes sesion iniciada");
+        	//console.log("ya tienes sesion iniciada");
         	setTimeout(function	(){
         		self.root.querySelector('#formfc').setAttribute('class','none');
         		self.root.querySelector('chat').setAttribute('class','show');
@@ -42,7 +43,7 @@
 			"url":"http://192.168.1.45:1337/company?id="+locals.c
 		})
 		.done(function(data){
-			console.log(data);
+			//console.log(data);
 			self.company.image = data.image;
 			/*
 			if(data.isConnected == 1){
@@ -68,16 +69,17 @@
 		this.nombrev.setAttribute('class','none');
 		this.emailv.setAttribute('class','none');
 		var name  = this.user.value ;
-		var email = this.last_name.value; 
+		var email = this.last_name.value;
 		var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		if(name.trim().length > 1){
 			//nombre válido
 			if ( expr.test(email) ){
 				//email válido
 				diloo.User.login({name:name,email:email},function(resp){
-					console.log(resp);
+				//	console.log(resp);
 					if(resp.status == 200){
 						//remove login
+						//console.log('+'+name+'+'+email);
 						self.root.querySelector('form').setAttribute('class','none');
 						self.root.querySelector('chat').setAttribute('class','show');
 					}else{

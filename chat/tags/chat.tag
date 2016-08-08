@@ -13,7 +13,7 @@
 			<div class="wrapper" if={ type=="nuevoSender" }>
 				<div class="utext">
 					{ body }
-					<span style="font-size: 8px;position: absolute;right: 2px;">{ time() }</span> 
+					<!--<span style="font-size: 8px;position: absolute;right: 2px;">{ time() }</span> -->
 				</div>		
 			</div>							
 		</div>	
@@ -60,7 +60,8 @@
 		})
 	}
 	createTicket(message){
-		var user = JSON.parse(window.localStorage.dilooUser)
+		var user = JSON.parse(window.localStorage.dilooUser);
+		console.log(user);
 		socket.emit('createTicket',{
 			message  	: message 
 			,companyId 	: locals.c
@@ -104,6 +105,9 @@
 				   type:"reciber"
 				   ,body:data.body
 			   })
+       });
+       socket.on("diloo-error",function(data){
+       		console.log(data);
        });
       socket.on('reconnect',function(){
 		  var storage = JSON.parse(window.localStorage.dilooApp);
