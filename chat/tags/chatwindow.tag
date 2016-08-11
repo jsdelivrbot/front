@@ -18,24 +18,46 @@
 </div>
     <script>
         var self = this;
-    	var locals = JSON.parse(window.localStorage.dilooApp);
+        var locals = JSON.parse(window.localStorage.dilooApp);
         self.messages = [] ;
-        //var chatView=this.tags.chat_tag;
-        //chatView.unmount();
-            rmclass(){
+         rmclass(){
                 this.root.querySelector('#allchat').setAttribute('class','none');
                 self.root.setAttribute('style','background-color:none');
                 self.root.querySelector('bubble').setAttribute('class','show');
             }
-        self.company ={ 
-            buble:{
-                image : "img/burbuja_0007_chat01.png"
-            }
-            ,image : ''
-            ,connectedMessage : ''
-            ,disconnectedMessage : ''
-            ,isConnected : true
-            ,showMessageIn : 2.5
+        start (){
+            $.ajax({
+                    type    : 'GET',
+                    url     : 'http://40.76.4.149:8000/company/widget/getOne?companyId=12',
+                    dataType: 'application/json'     
+                }).complete(function(response) {
+                        var msj = JSON.parse(response.responseText);
+                        var typem = JSON.parse(msj.response)[0];
+                        console.log(typem);
+                    
+                    var imgurl="";
+                    if (typem.fields.type=='t1') {
+                        imgurl = "https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja01_48.png";
+                    }else if(typem.fields.type=='t2'){
+                        imgurl = "https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja02_48.png";
+                    }else if(typem.fields.type=='t3'){
+                        imgurl = "https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja03_48.png";
+                    }
+                    self.company ={ 
+                            buble:{
+                                image : imgurl
+                            }
+                            ,image : ''
+                            ,connectedMessage : ''
+                            ,disconnectedMessage : ''
+                            ,isConnected : true
+                            ,showMessageIn : 2.5
+                        } 
+                    self.update();
+                });
+               // console.log("---"+imgurl);
+               
+           
         }
         unmounte (){
             //console.log(this.tags)
@@ -71,6 +93,7 @@
             })
         }
         this.on('mount',function(){
+            this.start()
             //this.listeners();
             //this.initmessage();
         });
