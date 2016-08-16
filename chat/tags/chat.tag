@@ -8,11 +8,11 @@
 				</div>
 				<div class="text">
 					{ body }
-				</div>			
+				</div>
 			</div>	
-			<div class="wrapper" if={ type=="nuevoSender" }>
+			<div class="wrapper" if={ response.type=="nuevoSender" }>
 				<div class="utext">
-					{ body }
+					{ response.body }
 					<!--<span style="font-size: 8px;position: absolute;right: 2px;">{ time() }</span> -->
 				</div>		
 			</div>							
@@ -76,13 +76,13 @@
 	createMessage(message){
 		var user = JSON.parse(window.localStorage.dilooUser)
 		var data =JSON.parse(window.localStorage.dilooApp);
-		socket.emit('send_message_web',{
+		socket.emit('send_message',{
 			type:'nuevoSender'
-			,senderId:user.sessionid
-			,ticket:data.ticket
-			,message:message
+			//,senderId:user.sessionid
+			,ticketId:data.ticket
+			,body	 :message
 		});
-	}	
+	}
     listeners(){
 		socket.on('connected',function(){
 			console.log('connected')
@@ -91,13 +91,14 @@
 			//socket.emit('join','ticket:'+resp.id);
 			console.log(resp);
 			var data =JSON.parse(window.localStorage.dilooApp);
-			data.ticket = resp.id;
+			data.ticket = resp.response.id_;
+			//console.log(data.ticket)
 			window.localStorage.dilooApp = JSON.stringify(data);
 		});
 		socket.on('joined',function(room){
 			console.log('joined to: '+room);
 		})
-		socket.on('new_message',function(message){
+		socket.on('rsp_createMessage',function(message){
 			self.messages.push(message);
 			console.log(message);
 			self.update();
@@ -121,17 +122,18 @@
 		e.preventDefault()
 		var message  = this.msm.value;
 		var storage = JSON.parse(window.localStorage.dilooApp);
+		//console.log(storage)
 		if (message==""){
 			console.log('no se encontro mensaje');
 		}else{
-		if(storage.ticket){
-			console.log('enviar')
-			this.createMessage(message);
-			document.getElementById('chat-all').scrollTop=6000;
-		}else{
-			console.log('crear')
-			this.createTicket(message);
-		}
+			if(storage.ticket){
+				console.log('enviar')
+				this.createMessage(message);
+				document.getElementById('chat-all').scrollTop=6000;
+			}else{
+				console.log('crear')
+				this.createTicket(message);
+			}
 		this.msm.value = '';
 		}
 	}

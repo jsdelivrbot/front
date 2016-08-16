@@ -28,7 +28,7 @@
 	console.log(locals);
 	var self = this;
         if (locals.ticket){
-        	//console.log("ya tienes sesion iniciada");
+        	console.log("ya tienes sesion iniciada");
         	setTimeout(function	(){
         		self.root.querySelector('#formfc').setAttribute('class','none');
         		self.root.querySelector('chat').setAttribute('class','show');

@@ -52,7 +52,7 @@
                 this.root.querySelector('#allchat').setAttribute('class','none');
                 self.root.setAttribute('style','background-color:none');
                 self.root.querySelector('bubble').setAttribute('class','show');
-                self.root.querySelector('#pmsj').setAttribute('class','show');
+                //self.root.querySelector('#pmsj').setAttribute('class','show');
             }
         start (){
             var cid = JSON.parse(window.localStorage.dilooApp);
