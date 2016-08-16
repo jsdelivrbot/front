@@ -26,7 +26,7 @@
 </div>
 <script>
 
-	var serverChat ="http://192.168.1.45:4050";
+	var serverChat ="http://192.168.1.7:4050";
 	var socket = io.connect(serverChat);
 	var self = this;
 	var locals = JSON.parse(window.localStorage.dilooApp);
@@ -37,7 +37,7 @@
 	
 	initmessage(){
 		$.get({
-			"url":"http://192.168.1.45:1337/company?id="+locals.c
+			"url":"http://192.168.1.7:1337/company?id="+locals.c
 		})
 		.done(function(data){
 			console.log(data);
@@ -59,6 +59,7 @@
 			console.log(e);
 		})
 	}
+	//creacion de ticket 
 	createTicket(message){
 		var user = JSON.parse(window.localStorage.dilooUser);
 		console.log(user);
@@ -70,7 +71,8 @@
 			,type    	: locals.o
 		});
 	
-	}	
+	}
+	//create mensaje
 	createMessage(message){
 		var user = JSON.parse(window.localStorage.dilooUser)
 		var data =JSON.parse(window.localStorage.dilooApp);

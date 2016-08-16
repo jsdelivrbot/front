@@ -2,7 +2,7 @@ function DilooApp (){
     var socket ;
     var locals = JSON.parse(window.localStorage.dilooApp);
     locals.ticket = '';    
-    var serverIp = "http://192.168.1.45:1337";
+    var serverIp = "http://192.168.1.7:1337";
         
     return {
         User:{

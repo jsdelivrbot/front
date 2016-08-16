@@ -40,7 +40,7 @@
 	}
 	initmessage(){
 		$.get({
-			"url":"http://192.168.1.45:1337/company?id="+locals.c
+			"url":"http://192.168.1.7:1337/company?id="+locals.c
 		})
 		.done(function(data){
 			//console.log(data);
