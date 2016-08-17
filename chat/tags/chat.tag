@@ -15,8 +15,13 @@
 					{ response.body }
 					<!--<span style="font-size: 8px;position: absolute;right: 2px;">{ time() }</span> -->
 				</div>		
-			</div>							
-		</div>	
+			</div>
+			<div class="wrapper" if={ type=="nuevoSender" }>
+				<div class="utext">
+					{ body }
+				</div>
+			</div>
+		</div>
 	</div>	
 	<div class="foot-msj">
 		<form method="POST" onsubmit={send}>
@@ -93,7 +98,9 @@
 			var data =JSON.parse(window.localStorage.dilooApp);
 			data.ticket = resp.response.id_;
 			//console.log(data.ticket)
+			self.messages.push(resp.response['message_'][0]);
 			window.localStorage.dilooApp = JSON.stringify(data);
+			self.update();
 		});
 		socket.on('joined',function(room){
 			console.log('joined to: '+room);
@@ -101,6 +108,7 @@
 		socket.on('rsp_createMessage',function(message){
 			self.messages.push(message);
 			console.log(message);
+			document.getElementById('chat-all').scrollTop=6000;
 			self.update();
 		});
        socket.on("closeTicket",function(data){
