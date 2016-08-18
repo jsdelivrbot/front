@@ -97,6 +97,7 @@
 			console.log(resp);
 			var data =JSON.parse(window.localStorage.dilooApp);
 			data.ticket = resp.response.id_;
+			window.localStorage.ticket=resp.response.id_;
 			//console.log(data.ticket)
 			self.messages.push(resp.response['message_'][0]);
 			window.localStorage.dilooApp = JSON.stringify(data);
@@ -112,10 +113,14 @@
 			self.update();
 		});
        socket.on("closeTicket",function(data){
-		   	self.message.push({
+		   	self.messages.push({
 				   type:"reciber"
 				   ,body:data.body
 			   })
+		  	window.localStorage.ticket="";
+		   	self.update();//
+		   	self.root.querySelector('#msm').setAttribute('disabled','true');
+		   	self.root.querySelector('#msm').setAttribute('placeholder','La conversación ah finalizado, gracias');
        });
        socket.on("diloo-error",function(data){
        		console.log(data);
@@ -134,7 +139,7 @@
 		if (message==""){
 			console.log('no se encontro mensaje');
 		}else{
-			if(storage.ticket){
+			if(window.localStorage.ticket && window.localStorage.ticket!="" ){
 				console.log('enviar')
 				this.createMessage(message);
 				document.getElementById('chat-all').scrollTop=6000;

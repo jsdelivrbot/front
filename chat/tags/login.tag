@@ -27,7 +27,7 @@
 	var locals = JSON.parse(window.localStorage.dilooApp);
 	console.log(locals);
 	var self = this;
-        if (locals.ticket){
+        if (window.localStorage.ticket && window.localStorage.ticket!=""){
         	console.log("ya tienes sesion iniciada");
         	setTimeout(function	(){
         		self.root.querySelector('#formfc').setAttribute('class','none');
