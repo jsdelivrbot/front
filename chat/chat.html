@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>chat</title>
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="component/semantic/semantic.min.css">
-	<link rel="stylesheet" type="text/css" href="component/semantic/components/popup.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/TLite.css">
-	<link rel="stylesheet" type="text/css" href="css/chat.css">
-	<style type="riot"></style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/semantic/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/popup/popup.min.css">
+    <link rel="stylesheet" href="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/animate/animate.css">
+
+    <link rel="stylesheet" type="text/css" href="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/main/chat.css">
+    <style type="riot"></style>
 </head>
-	<chatwindow></chatwindow>
-	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-	<script type="text/javascript" src="js/TLite.min.js"></script>
-	<!-- Compiled and minified JavaScript -->
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-  	<script type="text/javascript" src="component/semantic/semantic.min.js"></script>
-	<script type="text/javascript" src="component/semantic/components/popup.min.js"></script>
-	<!--<script type="text/javascript" src="js/actions.js"></script>-->
-	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-	<script type="text/javascript" src="js/riot+compiler.min.js"></script>
-	<script type="text/javascript" src="js/actions.js"></script>
-	<script type="riot/tag" src="tags/chatwindow.tag"></script>
-	<script type="riot/tag" src="tags/bubble.tag"></script>
-	<script type="riot/tag" src="tags/login.tag"></script>
-	<script type="riot/tag" src="tags/chat.tag"></script>
-	<script>
-		var chatWindow = {};
-		riot.compile(function(){
-			chatWindow = riot.mount('chatwindow')[0];
-		});
-		$('body').delegate('.btn-msj','click',function(){
-			tlite.show(this, { grav: 'w' });	
-		});    
-	</script>
+    <chatwindow></chatwindow>
+    <!-- jquery -->
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+    <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/semantic/semantic.min.js"></script>
+    <script type="text/javascript" src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/popup/popup.min.js"></script>
+    <!--<script type="text/javascript" src="js/actions.js"></script>-->
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <!--riot and tags -->
+    <script type="text/javascript" src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/tags/riot%2Bcompiler.min.js"></script>
+    <script type="riot/tag" src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/tags/chatwindow.tag"></script>
+    <script type="riot/tag" src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/tags/bubble.tag"></script>
+    <script type="riot/tag" src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/tags/login.tag"></script>
+    <script type="riot/tag" src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/tags/chat.tag"></script>
+    <!-- actions script -->
+    <script type="text/javascript" src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/components/main/actions.js"></script>
+    <script>
+        var chatWindow = {};
+        riot.compile(function(){
+            chatWindow = riot.mount('chatwindow')[0];
+        });
+        $('body').delegate('.btn-msj','click',function(){
+            tlite.show(this, { grav: 'w' });
+        });
+    </script>
 </html>

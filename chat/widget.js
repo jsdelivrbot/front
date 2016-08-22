@@ -2,7 +2,7 @@
     var iFrame = d.createElement(i);
     iFrame.setAttribute('frameborder',0);
     iFrame.setAttribute('allowtransparency','true');
-    iFrame.setAttribute('src','chat.html');
+    iFrame.setAttribute('src','https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/scripts/chat.html');
     //iFrame.setAttribute('width',305);
     //iFrame.setAttribute('height',375);
     iFrame.style.position = 'fixed';
