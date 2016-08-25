@@ -55,7 +55,7 @@
 				self.messages.push({
 					body:data['disconnectedMessage']
 					,type:'reciber'
-				});				
+				});
 			}
 			*/
 			self.update();

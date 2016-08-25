@@ -20,30 +20,6 @@
 </div>
     <login name="login_tag" class="none"></login>
 </div>
-    <style>
-         #pmsj{
-           background-color: white;
-            width: 150px;
-            height: 48px;
-            border-radius: 5px;
-            position: fixed;
-            left: 75px;
-            padding: 14px;
-            bottom: 22px;
-        }
-        .close{    
-            cursor:pointer;
-            width: 12px;
-            height: 12px;
-            background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            right: 3px;
-            text-align: center;
-            vertical-align: middle;
-            top: 0px;
-        }
-    </style>
     <script>
         var self = this;
         var locals = JSON.parse(window.localStorage.dilooApp);
