@@ -1,25 +1,20 @@
 <div>
-  
-	  <html>
+  <html>
 	  	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>chat</title>
 		<!-- Compiled and minified CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-		<link rel="stylesheet" type="text/css" href="component/semantic/semantic.min.css">
-		<link rel="stylesheet" type="text/css" href="component/semantic/components/popup.min.css">
-		<link rel="stylesheet" href="css/animate.css">
-		<link rel="stylesheet" href="css/TLite.css">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 	</head>
 	<body>
-		<chatwindow class="chat-larges">
-			<div class="msj-pop" id="pmsj"> 
+		<chatwindow id="diloo-chat-larges">
+			<div class="msj-pop" id="pmsj" onclick="a();"> 
 				<span>Bienvenido, ¿tienes alguna duda</span> 
 				<div class="close">x</div>
 			</div> 
-			<bubble name="bubble_tag">
+			<bubble name="bubble_tag" class="show" onclick="abrir();">
 				<div class="btn-msj" id="chat"> 
 					<img src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja03_48.png"> 
 				</div>
@@ -30,7 +25,7 @@
 						<div class="userico"></div> 
 						<span id="name"> Chat en vivo </span>
 						<div class="min">
-							<span id="mico"> <strong>__</strong> </span> 
+							<span id="mico" onclick="cerrar();"> <strong>__</strong> </span> 
 						</div>
 					</div>
 				</div> 
@@ -39,14 +34,14 @@
 						<div class="formulario"> 
 							<div class="input-field col s6"> 
 								<input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE"> 
-								<span id="nombrev" class="none">*Nombre demasiado corto</span> 
+								<span id="nombrev">*Nombre demasiado corto</span> 
 							</div>
-							<div class="input-field col s6" id="field-mail"> 
+							<div class="input-field col s6" id="field-mail" style="    margin-top: 0 !important;"> 
 								<input id="last_name" name="last_name" class="validate" placeholder="EMAIL" type="email"> 
-								<span id="emailv" class="none">*Direccion de correo inválida</span> 
+								<span id="emailv">*Direccion de correo inválida</span> 
 							</div> 
 							<center id="top"> 
-								<button style="margin-left: 5px;color: white;" type="submit" class="waves-effect waves-light btn">Iniciar chat</button>
+								<button type="submit" style="margin-left: 5px;color: white;" class="waves-effect waves-light btn" onclick="validation();">Iniciar chat</button>
 							</center> 
 							<p class="term"> Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones </p>
 						</div> 
@@ -76,29 +71,39 @@
 				</login> 
 			</div>
 		</chatwindow>
-		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-		<script type="text/javascript" src="js/TLite.min.js"></script>
-		<!-- Compiled and minified JavaScript -->
-	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-	  	<script type="text/javascript" src="component/semantic/semantic.min.js"></script>
-		<script type="text/javascript" src="component/semantic/components/popup.min.js"></script>
-		<!--<script type="text/javascript" src="js/actions.js"></script>-->
-		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-		<script type="text/javascript" src="js/riot+compiler.min.js"></script>
-		<script type="text/javascript" src="js/actions.js"></script>
-		<script type="riot/tag" src="tags/chatwindow.tag"></script>
-		<script type="riot/tag" src="tags/bubble.tag"></script>
-		<script type="riot/tag" src="tags/login.tag"></script>
-		<script type="riot/tag" src="tags/chat.tag"></script>
-		<script>
-			var chatWindow = {};
-			riot.compile(function(){
-				chatWindow = riot.mount('chatwindow')[0];
-			});
-			$('body').delegate('.btn-msj','click',function(){
-				tlite.show(this, { grav: 'w' });	
-			});    
-		</script>
-	<div class="hiddendiv common"></div></body></html>
-  
+		<div class="hiddendiv common"></div>
+	</body>
+	  <script type="text/javascript">
+  	function a(){
+  		document.querySelector('#diloo-chat-larges #pmsj').setAttribute('class','none');
+  	}
+  	function abrir(){
+  		document.querySelector('#diloo-chat-larges bubble').setAttribute('class','none');
+  		document.querySelector('#diloo-chat-larges #pmsj').setAttribute('class','none');
+  		document.querySelector('#diloo-chat-larges #allchat').setAttribute('class','shows');
+  		document.querySelector('#diloo-chat-larges #allchat login').setAttribute('class','show');
+  	}
+  	function cerrar(){
+	document.querySelector('#diloo-chat-larges bubble').setAttribute('class','show');
+	document.querySelector('#diloo-chat-larges #allchat').setAttribute('class','none');
+  	}
+  	function validation(){
+  		event.preventDefault();
+  		var nombre = document.getElementById('user').value;
+  		var email = document.getElementById('last_name').value;
+  		if (nombre.length>1) {
+  			document.querySelector('#nombrev').setAttribute('style','visibility:hidden');
+  			if (email.length>=7) {
+  				document.querySelector('#diloo-chat-larges #allchat login #formfc').setAttribute('class','none');
+  				document.querySelector('#diloo-chat-larges #allchat chat').setAttribute('class','show');
+  				document.querySelector('#emailv').setAttribute('style','visibility:hidden');
+  			}else{
+  				document.querySelector('#emailv').setAttribute('style','visibility:visible');
+  			}
+  		}else{
+  			document.querySelector('#nombrev').setAttribute('style','visibility:visible');
+  		}
+  	}
+  </script>
+</html>
 </div>
