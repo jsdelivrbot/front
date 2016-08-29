@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>diloochat</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<style type="text/css">
+	body{
+		background-color: skyblue !important;
+	}#diloo-chat-larges{
+	border-radius: 5px;
+	display: block;
+	position: fixed;
+	/*border: 1px solid black;*/
+	width: 300px;
+	height: 375px;
+	right: 5px;
+	bottom: 5px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+   
+    transition: opacity .1s linear .15s,-webkit-transform .25s ease-in-out;
+    transition: transform .25s ease-in-out,opacity .1s linear .15s;
+    transition: transform .25s ease-in-out,opacity .1s linear .15s,
+    -webkit-transform 300ms ease-in-out;}
+    .btn-msj{
+		display: inline-block;
+		margin-left: 6px;
+	    }
+	.btn-chat{
+		display: inline-block;
+		position: relative;
+    	bottom: 2px;
+	}
+	    .btn-msj img{
+			width: 15px;
+			height: 15px;
+			border-radius: 2.5px;
+			position: relative;
+    		top: 1px;
+		}
+
+    	 .fc {
+			width: 80%;
+			margin-left: 30px;
+			padding-top: 6px;
+		}
+		.none{
+			display: none;
+		}	
+		#pmsj{ 
+			  	width: 233px;
+			    height: 63px;
+			    border-radius: 5px;
+			    background-color: #ffffff;
+			    border: solid 1px #f2f2f2;
+			    padding: 20px;
+			    position: fixed;
+			    bottom: 84px;
+			}
+		.close{ cursor:pointer; width: 12px; height: 12px; background-color: white; border-radius: 50%; position: absolute; right: 3px; text-align: center; vertical-align: middle; top: 0px; }
+		.chatea-con-nosotros {
+			  width: 113px;
+			  height: 17px;
+			  font-family: PTSans;
+			  font-size: 14px;
+			  font-weight: bold;
+			  letter-spacing: -0.5px;
+			  color: #ffffff;
+			}
+		bubble {
+			    width: 173px;
+			    height: 37px;
+			    border-radius: 100px;
+			    background-color: #4c4c4c;
+			    position: fixed;
+			    bottom: 22px;
+			    padding: 9px;
+			    right: 40px;       
+					}
+		#diloo-message {
+		  width: 186px;
+		  height: 17px;
+		  font-family: PTSans;
+		  font-size: 14px;
+		  letter-spacing: -0.6px;
+		  color: #4c4c4c;
+		}
+		.Oval {
+		 width: 18px;
+	    height: 18px;
+	    position: absolute;
+	    top: -10px;
+	    right: -8px;
+		}
+		.shows{
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 5px;
+		background-color: rgb(230, 230, 230);
+		}
+		.header-bg {
+		  width: 100%;
+		  height: 52px;
+		  border-radius: 5px;
+		  background-color: #4c4c4c;
+		}.logo {
+		  width: 32px;
+		  height: 32px;
+		}
+		.arrow-down {
+		width: 0;
+	    height: 0;
+	    border-left: 10px solid transparent;
+	    border-right: 10px solid transparent;
+	    border-top: 10px solid #fff;
+	    position: absolute;
+	    bottom: -10px;
+	    right: 18px;
+		}
+		.Gotham-SA {
+		  width: 69px;
+		  height: 14px;
+		  font-family: PTSans;
+		  font-size: 14px;
+		  font-weight: bold;
+		  line-height: 1;
+		  letter-spacing: -0.5px;
+		  color: #ffffff;
+		}.Atencion {
+		  width: 103px;
+		  height: 14px;
+		  font-family: PTSans;
+		  font-size: 14px;
+		  line-height: 1;
+		  letter-spacing: -0.5px;
+		  color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+	<chatwindow id="diloo-chat-larges">
+			<div class="msj-pop none" id="pmsj" v-on:click="a()">
+				<span id="diloo-message">Hola, ¿en que podemos ayudarte?</span>
+				<img class="Oval" src="img/ic-close-round.png">
+				<div class="arrow-down"></div>
+			</div>
+			<bubble name="bubble_tag" class="none" v-on:click="abrir()">
+				<div class="btn-msj" id="chat">
+					<img id="diloo-bubble" src="img/ic-globo-amarillo.png" />
+				</div>
+				<div class="btn-chat">
+					<span class="chatea-con-nosotros">Chatea con nosotros</span>
+				</div>	
+			</bubble>
+			<div id="allchat" name="allchat" class="shows">
+				<div id="header" class="header-bg">
+						<img src="" class="logo">
+						<span class="Gotham-SA"> Gotham S.A </span>
+						<span class="Atencion">Atencion al cliente</span>
+						<div class="min">
+							<span id="mico" v-on:click="cerrar();"> <strong>__</strong> </span>
+						</div>
+					
+				</div>
+				<login name="login_tag" class="show">
+					<form class="fc" id="formfc">
+						<div class="formulario">
+							<div class="input-field col s6">
+								<input id="user" name="user" type="text" class="validate" minlength="1" placeholder="NOMBRE">
+								<span id="nombrev">*Nombre demasiado corto</span>
+							</div>
+							<div class="input-field col s6" id="field-mail" style="    margin-top: 0 !important;">
+								<input id="last_name" name="last_name" class="validate" placeholder="EMAIL" type="email">
+								<span id="emailv">*Direccion de correo inválida</span>
+							</div>
+							<center id="top">
+								<button type="button" style="margin-left: 5px;color: white;" class="waves-effect waves-light btn" v-on:click="validation();">Iniciar chat</button>
+							</center>
+							<p class="term"> Al hacer click en <strong>"Iniciar chat"</strong> estoy aceptando los términos y condiciones </p>
+						</div>
+						<center>
+							<span class="foot">powered by diloo</span>
+						</center>
+					</form>
+					<chat name="chat_tag" id="chat_tag" class="none">
+						<div style="width: 100%;height: 260px;">
+							<div class="all" id="chat-all">
+								<div class="reciber">
+									<div class="wrapper">
+										<div class="bimg">
+											<img src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja01_48.png" >
+										</div>
+										<div class="text"> Hola :)! ¿Cómo podemos ayudarte?. </div>
+									</div>
+								</div>
+							</div>
+							<div class="foot-msj">
+								<form method="POST">
+									<input type="text" id="msm" placeholder="escribe tu mensaje" name="message">
+								</form>
+							</div>
+						</div>
+					</chat>
+				</login>
+			</div>
+		</chatwindow>
+</body>
+</html>
