@@ -10,7 +10,7 @@ function WidgetChat(){
 				src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja03_48.png";
 			}
 			document.querySelector('#diloo-bubble').setAttribute('src',src);
-			document.querySelector('#diloo-message').innerHTML(data.message);
+			document.getElementById('diloo-message').innerText=data.message;
 		}
 	}
 }
