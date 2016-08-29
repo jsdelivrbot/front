@@ -11,12 +11,12 @@
 	<body>
 		<chatwindow id="diloo-chat-larges">
 			<div class="msj-pop" id="pmsj" onclick="a();"> 
-				<span>Bienvenido, ¿tienes alguna duda</span> 
+				<span id="diloo-message">Bienvenido, ¿tienes alguna duda</span> 
 				<div class="close">x</div>
 			</div> 
 			<bubble name="bubble_tag" class="show" onclick="abrir();">
 				<div class="btn-msj" id="chat"> 
-					<img src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja03_48.png"> 
+					<img id="diloo-bubble"> 
 				</div>
 			</bubble> 
 			<div id="allchat" name="allchat" class="none"> 
@@ -55,7 +55,7 @@
 								<div class="reciber"> 
 									<div class="wrapper"> 
 										<div class="bimg"> 
-											<img src="https://s3-sa-east-1.amazonaws.com/diloo/36917749-b05d-409a-8e70-265fd1f1c3a2_image.jpg">
+											<img src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja01_48.png" >
 										</div> 
 										<div class="text"> Hola :)! ¿Cómo podemos ayudarte?. </div>
 									</div> 
@@ -73,6 +73,7 @@
 		</chatwindow>
 		<div class="hiddendiv common"></div>
 	</body>
+	<script type="text/javascript" src="js/main.js"></script>
 	  <script type="text/javascript">
   	function a(){
   		document.querySelector('#diloo-chat-larges #pmsj').setAttribute('class','none');
