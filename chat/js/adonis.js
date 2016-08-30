@@ -1,12 +1,14 @@
   var d = document;
   window.$dilooApp = {};
-
   var dilooWidget = new Vue({
     el:'#diloo-chat-larges'
     ,data:{
       widget:{
         alert_message:""
         ,image:""
+      }
+      ,ticket:{
+        message_:[]
       }
     }
     ,methods:{
@@ -20,12 +22,14 @@
         document.querySelector('#diloo-chat-larges #allchat login').setAttribute('class','show');
       }
       ,validation:function(e){
-        console.log(e);
         var nombre = document.getElementById('user').value;
         var email = document.getElementById('last_name').value;
         if (nombre.length>1) {
           document.querySelector('#nombrev').setAttribute('style','visibility:hidden');
           if (email.length>=7) {
+
+            diloo.User.create({name:nombre,email:email});
+
             document.querySelector('#diloo-chat-larges #allchat login #formfc').setAttribute('class','none');
             document.querySelector('#diloo-chat-larges #allchat chat').setAttribute('class','show');
             document.querySelector('#emailv').setAttribute('style','visibility:hidden');
@@ -34,6 +38,14 @@
           }
         }else{
           document.querySelector('#nombrev').setAttribute('style','visibility:visible');
+        }
+      }
+      ,sendMessage:function(){
+        var message = document.getElementById('msm').value;
+        if(this.ticket.id_){
+          diloo.Ticket.sendMessage(message);
+        }else{
+          diloo.Ticket.create(message);
         }
       }
       ,cerrar:function(){
@@ -66,6 +78,11 @@
             s.emit('getCompanyInfo',{companyId:cid},function(r){
               window.$dilooApp.w=JSON.parse(window.$dilooApp.w);
               window.$dilooApp.c=r.response;
+              dilooWidget.ticket.message_.push({
+                type:"nuevoSender"
+                ,body:window.$dilooApp.c.defaultMessage
+                ,createdAt:new Date()
+              })
             });
         }
         ,Widget:{
@@ -80,8 +97,7 @@
               src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja03_48.png";
             }
             widget.image = src;
-            dilooWidget.$data.widget=widget;
-            console.log(dilooWidget.$data)
+            dilooWidget.widget=widget;
           }
         }
         ,User:{
@@ -93,6 +109,7 @@
               ,createdBy : window.$dilooApp.w.company
             }
             s.emit('createUser',u,function(r){
+              console.log(r);
               window.$dilooApp.u=r.response;
             })
           }
@@ -111,12 +128,10 @@
             }
             ,sendMessage:function(message){
                 var u = window.$dilooApp.u;
-                var t = window.$dilooApp.t;
-                s.emit('send_message_web',{
+                s.emit('send_message',{
                     type:'nuevoSender'
-                    ,senderId:u.userid
-                    ,ticket:t.id_
-                    ,message:message
+                    ,ticketId:dilooWidget.ticket.id_
+                    ,body:message
                 });
             }
         }
@@ -127,7 +142,7 @@
           s.on('reconnect',function(){
             var t = window.$dilooApp.t;
             var room= "ticket:"+t.id_;
-            socket.emit("join",room);
+            s.emit("join",room);
           });
           s.on("diloo-error",function(r){
               console.log(r)
@@ -136,10 +151,10 @@
             console.log('joined to: '+room);
           });
           s.on('rsp_createTicket',function(r){
-            window.$dilooApp.t = r.response;
+            dilooWidget.ticket = r.response;
           });
           s.on('rsp_createMessage',function(message){
-            window.$dilooApp.t.messages_.push(message);
+            dilooWidget.ticket.message_.push(message.response);
           });
           s.on("closeTicket",function(data){
             window.$dilooApp.t.messages_.push({
