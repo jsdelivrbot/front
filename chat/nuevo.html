@@ -9,7 +9,7 @@
 </head>
 <body>
 	<chatwindow id="diloo-chat-larges">
-			<div class="msj-pop none" id="pmsj" v-on:click="a()">
+			<div class="msj-pop " id="pmsj" v-on:click="a()">
 				<span id="diloo-message">Hola, ¿en que podemos ayudarte?</span>
 				<img class="Oval" src="img/ic-close-round.png">
 				<div class="arrow-down"></div>
@@ -22,7 +22,7 @@
 					<span class="chatea-con-nosotros">Chatea con nosotros</span>
 				</div>	
 			</bubble>
-			<div id="allchat" name="allchat" class="shows">
+			<div id="allchat" name="allchat" class="none">
 				<div id="header" class="header-bg">
 						<div class="inline">
 						<img src="img/burbuja_0007_chat01.png" class="logo">
@@ -110,7 +110,7 @@
 				</div>	
 			</div>		
 		</div>
-			<div class="arrow-down-chat"></div>
+			<div class="arrow-down-chat none" id="arrow-chat"></div>
 		</chatwindow>
 </body>
 </html>
