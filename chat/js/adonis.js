@@ -41,12 +41,13 @@
         }
       }
       ,sendMessage:function(){
-        var message = document.getElementById('msm').value;
+        var message = document.getElementById('msm');
         if(this.ticket.id_){
-          diloo.Ticket.sendMessage(message);
+          diloo.Ticket.sendMessage(message.value);
         }else{
-          diloo.Ticket.create(message);
+          diloo.Ticket.create(message.value);
         }
+        message.value='';
       }
       ,cerrar:function(){
         document.querySelector('#diloo-chat-larges bubble').setAttribute('class','show');
@@ -141,7 +142,7 @@
           });
           s.on('reconnect',function(){
             var t = window.$dilooApp.t;
-            var room= "ticket:"+t.id_;
+            var room= "ticket:"+dilooWidget.ticket.id_;
             s.emit("join",room);
           });
           s.on("diloo-error",function(r){
@@ -154,14 +155,16 @@
             dilooWidget.ticket = r.response;
           });
           s.on('rsp_createMessage',function(message){
-            dilooWidget.ticket.message_.push(message.response);
+            dilooWidget.ticket.message_.push(message);
           });
           s.on("closeTicket",function(data){
-            window.$dilooApp.t.messages_.push({
+            dilooWidget.ticket.message_.push({
                type:"reciber"
                ,body:data.body
-             })
-            window.$dilooApp.t="";
+             });
+             s.emit('leave','ticket:'+data.ticket,function(m){
+               console.log(m);
+             });
           });
         }
     }
