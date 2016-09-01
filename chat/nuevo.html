@@ -4,19 +4,46 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>diloochat</title>
-
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+<script>
+	function mostrarOff(){
+		document.querySelector('#pmsj').setAttribute('class','none')
+		document.querySelector('#allchat').setAttribute('class','shows')
+		document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat')
+		document.querySelector('#chat-body-off').setAttribute('class','show')
+	}function mostrarlogin (){
+		document.querySelector('#pmsj').setAttribute('class','none')
+		document.querySelector('#allchat').setAttribute('class','shows')
+		document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat')
+		document.querySelector('#chat-body-login').setAttribute('class','show')
+	}function closepop(){
+		document.querySelector('#pmsj').setAttribute('class','none');
+	}function min(){
+		document.querySelector('#allchat').setAttribute('class','none')
+		document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat-none')
+	}function sendoff(){
+		event.preventDefault()
+		document.querySelector('.message-off').setAttribute('style','display:none;');
+		document.querySelector('.diloo-form-off').setAttribute('class','none');
+		document.querySelector('#send-off').setAttribute('class','show');
+	}function chatOn(){
+		event.preventDefault()
+		document.querySelector('#chat-body-login').setAttribute('class','none')
+		document.querySelector('#chat-body').setAttribute('class','show')	
+	}
+</script>
 <body>
 	<chatwindow id="diloo-chat-larges">
-			<div class="msj-pop " id="pmsj" v-on:click="a()">
+			<div class="msj-pop" id="pmsj" v-on:click="a()">
 				<span id="diloo-message">Hola, ¿en que podemos ayudarte?</span>
-				<img class="Oval" src="img/ic-close-round.png">
+				<img class="oval" src="img/ic-close-round.png" onclick="closepop()">
 				<div class="arrow-down"></div>
 			</div>
-			<bubble name="bubble_tag" class="show" v-on:click="abrir()">
+			<bubble name="bubble_tag" class="show" onclick="mostrarlogin()">
 				<div class="btn-msj" id="chat">
 					<img id="diloo-bubble" src="img/ic-globo-amarillo.png" />
+					<img id="diloo-bubble-response" src="img/ic-globo-blanco.png" />
 				</div>
 				<div class="btn-chat">
 					<span class="chatea-con-nosotros">Chatea con nosotros</span>
@@ -30,10 +57,11 @@
 						<div class="Gotham-SA inline"> Gotham S.A </div>
 						<div class="Atencion">Atencion al cliente</div>
 						<div class="inline" id="mico" >
-							<span v-on:click="cerrar();"> <strong>__</strong> </span>
+							<span onclick="min();"> <strong>__</strong> </span>
 						</div>
 				</div>
-			<div class="chat-body-off">
+			<!-- Reciber Dissable -->	
+			<div id="chat-body-off" class="none">
 				<div id="container-off" class="show">
 					<div class="message-off">
 						<div class="title-off">
@@ -45,14 +73,14 @@
 					</div>
 					<form class="diloo-form-off">
 							<div class="label-name">Nombre</div>
-							<div class="vname none">*Nombre muy corto</div>
+							<div class="vname ">*Nombre muy corto</div>
 								<input class="field-name"></input>
 							<div class="label-correo">Correo Electrónico</div>
-							<div class="vmail none">*Correo inválido</div>
+							<div class="vmail ">*Correo inválido</div>
 								<input class="field-name"></input>
 							<div class="mensaje-off">Mensaje</div>
 							<textarea class="mensaje-off-user"></textarea>
-								<button class="diloo-btn"> <span class="diloo-start">Enviar Mensaje</span></button>
+								<button class="diloo-btn" onclick="sendoff()"> <span class="diloo-start">Enviar Mensaje</span></button>
 							<div class="diloo-term">Al iniciar el chat estás aceptando las <span class="politic">Políticas de Privacidad. </span></div>
 						</form>
 					<div class="powered">Powered by <span class="politic">Diloo.</span></div>
@@ -65,8 +93,10 @@
 				<div class="nos-pondremos">Nos pondremos en contacto contigo lo más pronto posible. </div>	
 				<div class="cerrar-ventana">Cerrar ventana</div>			
 				</div>
-			</div>	
-			<div class="chat-body-login none">
+			</div>
+			<!-- End Reciber Dissable -->
+			<!-- dash Login -->	
+			<div id="chat-body-login" class="none">
 					<div class="message">
 						<div class="reciber-print">
 							<span class="layer">Hola, ¿en que podemos ayudarte?</span>
@@ -77,16 +107,20 @@
 					<form class="diloo-form">
 						<div class="first-text"> Ingresa tus datos para conversar <img class="text-ico" src="img/smile.png">.</div>
 						<div class="label-name">Nombre</div>
+						<div class="vname">*Nombre muy corto</div>
 							<input class="field-name"></input>
 						<div class="label-correo">Correo Electrónico</div>
+						<div class="vmail">*Correo inválido</div>
 							<input class="field-name"></input>
-							<button class="diloo-btn-login"> <span class="diloo-start">Iniciar chat</span></button>
+							<button class="diloo-btn-login" onclick="chatOn()"> <span class="diloo-start">Iniciar chat</span></button>
 						<div class="diloo-term-login">Al iniciar el chat estás aceptando las <span class="politic">Políticas de Privacidad. </span></div>
 					</form>
 						<div class="powered">Powered by <span class="politic">Diloo.</span></div>
 				</div>	
 			</div>
-			<div class="chat-body none">
+			<!--login end-->
+			<!-- Chat body -->
+			<div id="chat-body" class="none">
 				<div class="chat-msg" id="scroll">
 					<div class="message">
 						<div class="reciber-print">
@@ -97,12 +131,7 @@
 					<div class="nuevoSender">
 								<span class="userlayer">Care not to perform this part of my task methodically; but shall be content to produce the desired impression by separate citations of items.</span>	
 					</div>
-					<div class="nuevoSender">
-								<span class="userlayer">Care not to perform this part of my task methodically; but shall be content to produce the desired impression by separate citations of items.</span>	
-					</div>
-					<div class="reciber">
-							<span class="layer-reciber">Hola, ¿en que podemos ayudarte?</span>
-					</div>
+				
 					<div class="powered">Powered by <span class="politic">Diloo.</span></div>	
 				</div>
 				<div class="write">
@@ -110,7 +139,7 @@
 				</div>	
 			</div>		
 		</div>
-			<div class="arrow-down-chat none" id="arrow-chat"></div>
+			<div class="arrow-down-chat-none" id="arrow-chat"></div>
 		</chatwindow>
 </body>
 </html>

@@ -20,13 +20,17 @@ body{
     .btn-msj{
 		display: inline-block;
 		margin-left: 6px;
-			img{
+			#diloo-bubble{
 				width: 15px;
 				height: 15px;
 				border-radius: 2.5px;
 				position: relative;
 	    		top: 12px;
 	    		left: 8px;
+	    		display: block;
+			}
+			#diloo-bubble-response{
+				display: none;
 			}
 	    }
 	.btn-chat{
@@ -75,7 +79,8 @@ body{
 			    background-color: #4c4c4c;
 			    position: fixed;
 			    bottom: 22px;
-			    right: 40px;       
+			    right: 40px;
+			    cursor: pointer;       
 					}
 		#diloo-message {
 		  width: 186px;
@@ -88,12 +93,13 @@ body{
 		  top: 22px;
 		  left: 26px;
 		}
-		.Oval {
+		.oval {
 		 width: 18px;
 	    height: 18px;
 	    position: absolute;
 	    top: -10px;
 	    right: -8px;
+	    cursor: pointer;
 		}
 		.shows{
 		    display: block !important;
@@ -102,7 +108,7 @@ body{
 		    position: fixed;
 		    border-radius: 5px;
 		    background: rgb(230, 230, 230);
-		    bottom: 159px;
+		    bottom: 189px;
 		    right: 41px;
 		}
 		.header-bg {
@@ -127,7 +133,17 @@ body{
 	    bottom: -10px;
 	    right: 18px;
 		}
-		.arrow-down-chat{
+		.arrow-down-chat-none{
+	    width: 0;
+	    height: 0;
+	    border-left: 10px solid transparent;
+	    border-right: 10px solid transparent;
+	    border-top: 10px solid #ffffff;
+	    position: absolute;
+	    bottom: 67px;
+	    right: 58px;
+	    display: none;
+		}.arrow-down-chat{
 	    width: 0;
 	    height: 0;
 	    border-left: 10px solid transparent;
@@ -237,7 +253,7 @@ body{
 		    }
 		    .diloo-loggin{
 		      width: 320px;
-			  height: 319px;
+			  height: 349px;
 			  border-radius: 1px 1px 5px 5px;
 			  background-color: rgb(230, 230, 230);
 		    }.start-chat{
@@ -289,12 +305,27 @@ body{
     		  margin-left: 20px;
     		  display: inline-block;
 			}
-			.vname{display: inline-block;display: inline-block;font-size: 10px;color: red;float: right;position: relative;right: 22px;top: 33px;}
+			.vname{
+				    display: inline-block;
+				    font-size: 10px;
+				    color: red;
+				    float: right;
+				    position: relative;
+				    right: 24px;
+				    top: 33px;
+				}
 			.vmail{
-				display: inline-block;display: inline-block;font-size: 10px;color: red;float: right;position: relative;right: 22px;top: 11px;
+				display: inline-block;
+				display: inline-block;
+				font-size: 10px;
+				color: red;
+				float: right;
+				position: relative;
+				right: 22px;
+				top: 11px;
 			}
 			.field-name {
-			  width: 280px !important;
+			  width: 80% !important;
 			  height: 36px !important;
 			  border-radius: 2px !important;
 			  background-color: #ffffff !important;
@@ -366,23 +397,23 @@ body{
 			    bottom: -77px;
 			    left: 15px;
 			}
-			.chat-body-login{
+			#chat-body-login{
 				width: 100%;
 			    /*border: 1px solid;*/
-			    height: 405px;
+			    height: 435px;
 			    background-color: #fff;
 			    border-radius: 1px 1px 5px 5px;
-			}.chat-body-off{
+			}#chat-body-off{
 				width: 100%;
 			    /*border: 1px solid;*/
-			    height: 405px;
+			    height: 435px;
 			    border-radius: 1px 1px 5px 5px;
 			    background-color: #f2f2f2;
 			}
-			.chat-body{
+			#chat-body{
 				width: 100%;
 			    /*border: 1px solid;*/
-			    height: 405px;
+			    height: 435px;
 			    background-color: #fff;
 			    border-radius: 1px 1px 5px 5px;
 			}.introducir-chat {
@@ -443,6 +474,8 @@ body{
 			  letter-spacing: -0.3px;
 			  text-align: center;
 			  color: #a9a9a9;
+			  position: relative;
+			  left: 12px;
 			}.text-off {
 			  width: 280px;
 			  height: 34px;
@@ -452,8 +485,10 @@ body{
 			  text-align: center;
 			  color: #848484;
 			  margin-top: 5px;
+			  position: relative;
+			  left: 12px;
 			}.mensaje-off-user{ 
-				width: 280px;
+				width: 80%;
 			    height: 65px;
 			    border-radius: 2px;
 			    background-color: #ffffff;
@@ -510,5 +545,511 @@ body{
 			  position: relative;
 		    top: 20px;
 		    left: 110px;
+			}	
+}
+@media (max-width: 500px) {
+	#diloo-chat-larges{
+		border-radius: 5px;
+		display: block;
+		position: fixed;
+		/*border: 1px solid black;*/
+		width: 100%;
+		height: 100%;
+		right: 0px !important;
+    	bottom: 0px !important;
+	    -webkit-transform: scale(1);
+	    transform: scale(1);
+	   
+	    transition: opacity .1s linear .15s,-webkit-transform .25s ease-in-out;
+	    transition: transform .25s ease-in-out,opacity .1s linear .15s;
+	    transition: transform .25s ease-in-out,opacity .1s linear .15s,
+	    -webkit-transform 300ms ease-in-out;
+	    .label-correo {
+					  width: 50%;
+					  height: 14px;
+					  font-family: PTSans;
+					  font-size: 12px;
+					  letter-spacing: -0.4px;
+					  color: #4c4c4c;
+					  margin-top: 10px;
+		    		  margin-left: 20px;
+		    		  display: block !important;
+					}.vname{
+	    	 display: inline-block;
+		    font-size: 10px;
+		    color: red;
+		    float: right;
+		    position: relative;
+		    right: 63px;
+		    top: 37px;
+		    }.vmail{
+		    	    display: inline-block;
+			    font-size: 10px;
+			    color: red;
+			    float: right;
+			    position: relative;
+			    right: 62px;
+			    top: 0px;
+		    }
+	    .diloo-loggin{
+		      width: 100%;
+			  height: 319px;
+			  border-radius: 1px 1px 5px 5px;
+			  background-color: rgb(230, 230, 230);}
+	    .Gotham-SA {
+		  	width: 50%;
+		    height: 14px;
+		    font-family: PTSans;
+		    font-size: 14px;
+		    font-weight: bold;
+		    position: relative;
+		    line-height: 1;
+		    letter-spacing: -0.5px;
+		    color: #ffffff;
+		    left: 18px;
+		    bottom: 8px;
+		}.Atencion {
+		    width: 50%;
+		    height: 14px;
+		    font-family: PTSans;
+		    font-size: 14px;
+		    position: relative;
+		    line-height: 1;
+		    letter-spacing: -0.5px;
+		    color: #ffffff;
+		    left: 54px;
+		    bottom: 8px;
+		}
+		.shows {
+		    display: block !important;
+		    width: 100%;
+		    height: 100%;
+		    position: relative;
+		    border-radius: 5px;
+		    background: #e6e6e6;
+		    bottom: 0px;
+		    right: 0px;
+		}    
+	    #pmsj{
+	    	width: 233px;
+		    height: 63px;
+		    border-radius: 5px;
+		    background-color: #ffffff;
+		    border: solid 1px #f2f2f2;
+		    position: fixed;
+		    bottom: 23px;
+		    right: 90px;
+	    }.message-time{
+		        width: 50%;
+			    height: 12px;
+			    font-family: PTSans;
+			    font-size: 10px;
+			    letter-spacing: -0.4px;
+			    color: #9b9b9b;
+			    position: relative;
+			    bottom: -12px;
+			    left: 2px;
+		    }
+	    .arrow-down {
+		  width: 0; 
+		  height: 0; 
+		  border-top: 10px solid transparent;
+		    border-bottom: 10px solid transparent;
+		    border-left: 10px solid #fff;
+		    position: absolute;
+		    bottom: 18px;
+		    right: -18px;
+		}.arrow-down-chat{
+	    width: 0;
+	    height: 0;
+	    border-left: 10px solid transparent;
+	    border-right: 10px solid transparent;
+	    border-top: 10px solid #ffffff;
+	    position: absolute;
+	    bottom: 67px;
+	    right: 58px;
+	    display: none;
+		}
+	    bubble {
+		  width: 64px;
+		  height: 64px;
+		  border-radius: 150px;
+		  background-color: #4c4c4c;
+		  position: fixed;
+		    bottom: 22px;
+		    right: 10px;
+		    cursor: pointer;
+		  .btn-chat{
+		  	display: none;
+		  }
+		  .btn-msj{
+		  	width: 64px;
+			  height: 64px;
+			  border-radius: 150px;
+			  background-color: #4c4c4c;
 			}
+			  #diloo-bubble-response{
+			  	width: 37px;
+			    height: 35px;
+			    border-radius: 5px;
+			    display: block !important;
+			    position: relative;
+			    top: 16px;
+			    left: 11px;
+			  }
+			  #diloo-bubble{display: none !important;}
+
+		}
+	}
+}
+@media (min-width: 501px) and (max-width:750px) {
+		#diloo-chat-larges{
+		border-radius: 5px;
+		display: block;
+		position: absolute;
+		/*border: 1px solid black;*/
+		width: 100%;
+		height: 100%;
+		right: 0px !important;
+    	bottom: 0px !important;
+	    -webkit-transform: scale(1);
+	    transform: scale(1);
+	   
+	    transition: opacity .1s linear .15s,-webkit-transform .25s ease-in-out;
+	    transition: transform .25s ease-in-out,opacity .1s linear .15s;
+	    transition: transform .25s ease-in-out,opacity .1s linear .15s,
+	    -webkit-transform 300ms ease-in-out;
+	    .nos-pondremos {
+			  width: 50%;
+			  height: 34px;
+			  font-family: PTSans;
+			  font-size: 14px;
+			  letter-spacing: -0.6px;
+			  text-align: center;
+			  color: #848484;
+			  position: relative;
+			  top: 15px;
+    		  left: 25%;
+    		  margin-top: 16px;
+			}.cerrar-ventana {
+			  width: 50%;
+			  height: 17px;
+			  font-family: PTSans;
+			  font-size: 14px;
+			  letter-spacing: -0.6px;
+			  text-align: center;
+			  color: #1381e0;
+			  position: relative;
+		    top: 20px;
+		    left: 42%;
+			}.enviado{
+				 width: 137px;
+			    height: 21px;
+			    font-family: PTSans;
+			    font-size: 18px;
+			    font-weight: bold;
+			    letter-spacing: -0.8px;
+			    text-align: center;
+			    color: #ffffff;
+			    position: relative;
+			    top: 50px;
+			    left: 37%;
+			}
+	    .check{
+				width: 74px;
+			    height: 64px;
+			    font-family: MaterialIcons;
+			    font-size: 64px;
+			    letter-spacing: -2.5px;
+			    text-align: center;
+			    color: #ffffff;
+			    position: relative;
+			    top: 45px;
+			    left:42%;
+			}
+	    .powered {
+			     display: none;
+						}
+		.fondo-verde {
+			  width: 100%;
+			  height: 197px;
+			  background-color: #58b957;
+			}
+		.cerrar-ventana {
+			  width: 50%;
+			  height: 17px;
+			  font-family: PTSans;
+			  font-size: 14px;
+			  letter-spacing: -0.6px;
+			  text-align: center;
+			  color: #1381e0;
+			  position: relative;
+		    top: 20px;
+		    left: 110px;
+			}
+	    .diloo-btn {
+			  width: 280px;
+			  height: 38px;
+			  border-radius: 2px;
+			  background-color: #58b957;
+			  box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, 0.2);
+			  margin-top: 10px;
+			  margin-left: 24%;	
+			}
+	    .label-name {
+			  width: 39px;
+			  height: 14px;
+			  font-family: PTSans;
+			  font-size: 12px;
+			  letter-spacing: -0.4px;
+			  color: #4c4c4c;
+			  margin-top: 32px;
+    		  margin-left: 20px;
+    		  display: block !important;
+			}
+			.vname {
+			    display: inline-block;
+			    font-size: 10px;
+			    color: red;
+			    float: right;
+			    position: relative;
+			    right: 108px;
+			    top: -10px;
+			}
+			.title-off {
+			  width: 280px;
+			  height: 21px;
+			  font-family: PTSans;
+			  font-size: 18px;
+			  font-weight: bold;
+			  letter-spacing: -0.3px;
+			  text-align: center;
+			  color: #a9a9a9;
+			  position: relative;
+			  left: 22%;
+			}.text-off {
+			  width: 280px;
+			  height: 34px;
+			  font-family: PTSans;
+			  font-size: 14px;
+			  letter-spacing: -0.1px;
+			  text-align: center;
+			  color: #848484;
+			  margin-top: 5px;
+			  position: relative;
+			  left: 23%;
+			}
+		.label-correo {
+					  width: 80%;
+					  height: 14px;
+					  font-family: PTSans;
+					  font-size: 12px;
+					  letter-spacing: -0.4px;
+					  color: #4c4c4c;
+					  margin-top: 10px;
+		    		  margin-left: 20px;
+		    		  display: block !important;
+					}.vmail {
+			    display: inline-block;
+			    font-size: 10px;
+			    color: red;
+			    float: right;
+			    position: relative;
+			    right: 109px;
+			    top: -12px;}
+	    .diloo-form-off{
+		    	width: 100%;
+		    	position: relative;
+		    	top: 0 !important;
+		    }
+	    .diloo-loggin{
+		      width: 100%;
+			  height: 319px;
+			  border-radius: 1px 1px 5px 5px;
+			  background-color: rgb(230, 230, 230);}
+	    .Gotham-SA {
+		  	width: 50%;
+		    height: 14px;
+		    font-family: PTSans;
+		    font-size: 14px;
+		    font-weight: bold;
+		    position: relative;
+		    line-height: 1;
+		    letter-spacing: -0.5px;
+		    color: #ffffff;
+		    left: 18px;
+		    bottom: 8px;
+		}.Atencion {
+		    width: 50%;
+		    height: 14px;
+		    font-family: PTSans;
+		    font-size: 14px;
+		    position: relative;
+		    line-height: 1;
+		    letter-spacing: -0.5px;
+		    color: #ffffff;
+		    left: 54px;
+		    bottom: 8px;
+		}
+		.shows {
+		    display: block !important;
+		    width: 100%;
+		    height: 100%;
+		    position: relative;
+		    border-radius: 5px;
+		    background: #e6e6e6;
+		    bottom: 0px;
+		    right: 0px;
+		}    
+	    #pmsj{
+	    	width: 233px;
+		    height: 63px;
+		    border-radius: 5px;
+		    background-color: #ffffff;
+		    border: solid 1px #f2f2f2;
+		    position: fixed;
+		    bottom: 23px;
+		    right: 90px;
+	    }.message-time{
+		        width: 50%;
+			    height: 12px;
+			    font-family: PTSans;
+			    font-size: 10px;
+			    letter-spacing: -0.4px;
+			    color: #9b9b9b;
+			    position: relative;
+			    bottom: -12px;
+			    left: 2px;
+		    }
+	    .arrow-down {
+		  width: 0; 
+		  height: 0; 
+		  border-top: 10px solid transparent;
+		    border-bottom: 10px solid transparent;
+		    border-left: 10px solid #fff;
+		    position: absolute;
+		    bottom: 18px;
+		    right: -18px;
+		}.arrow-down-chat{
+	    width: 0;
+	    height: 0;
+	    border-left: 10px solid transparent;
+	    border-right: 10px solid transparent;
+	    border-top: 10px solid #ffffff;
+	    position: absolute;
+	    bottom: 67px;
+	    right: 58px;
+	    display: none;
+		}
+	    bubble {
+		  width: 64px;
+		  height: 64px;
+		  border-radius: 150px;
+		  background-color: #4c4c4c;
+		  position: fixed;
+		    bottom: 22px;
+		    right: 10px;
+		    cursor: pointer;
+		  .btn-chat{
+		  	display: none;
+		  }
+		  .btn-msj{
+		  	width: 64px;
+			  height: 64px;
+			  border-radius: 150px;
+			  background-color: #4c4c4c;
+			}
+			  #diloo-bubble-response{
+			  	width: 37px;
+			    height: 35px;
+			    border-radius: 5px;
+			    display: block !important;
+			    position: relative;
+			    top: 16px;
+			    left: 11px;
+			  }
+			  #diloo-bubble{display: none !important;}
+
+		}
+	}
+	}
+@media(max-width:350px){
+	#diloo-chat-larges{
+		bubble {
+			  width: 64px;
+			  height: 64px;
+			  border-radius: 150px;
+			  background-color: #4c4c4c;
+			  }	
+			  .diloo-loggin{
+		      width: 100%;
+			  height: 319px;
+			  border-radius: 1px 1px 5px 5px;
+			  background-color: rgb(230, 230, 230);}
+	    .Gotham-SA {
+		  	width: 50%;
+		    height: 14px;
+		    font-family: PTSans;
+		    font-size: 14px;
+		    font-weight: bold;
+		    position: relative;
+		    line-height: 1;
+		    letter-spacing: -0.5px;
+		    color: #ffffff;
+		    left: 18px;
+		    bottom: 8px;
+		}.Atencion {
+		    width: 50%;
+		    height: 14px;
+		    font-family: PTSans;
+		    font-size: 14px;
+		    position: relative;
+		    line-height: 1;
+		    letter-spacing: -0.5px;
+		    color: #ffffff;
+		    left: 54px;
+		    bottom: 8px;
+		}
+			#pmsj{
+			width: 188px   !important;
+		    height: 63px  !important;
+		    border-radius: 5px;
+		    background-color: #ffffff;
+		    border: solid 1px #f2f2f2;
+		    position: fixed;
+		    bottom: 22px;
+		    right: 85px;
+		    cursor: pointer;
+		    	#diloo-message{
+				    font-family: PTSans;
+				    font-size: 12px;
+				    letter-spacing: -0.6px;
+				    color: #4c4c4c;
+				    position: relative;
+				    top: 22px ;
+				    left: 10px ;
+				}
+			}	
+		.message-time{
+		        width: 50%;
+			    height: 12px;
+			    font-family: PTSans;
+			    font-size: 10px;
+			    letter-spacing: -0.4px;
+			    color: #9b9b9b;
+			    position: relative;
+			    bottom: -12px;
+			    left: 2px;
+		    }
+	    .arrow-down {
+		  width: 0; 
+		  height: 0; 
+		  border-top: 10px solid transparent;
+		    border-bottom: 10px solid transparent;
+		    border-left: 10px solid #fff;
+		    position: absolute;
+		    bottom: 18px;
+		    right: -18px;
+		}	
+	}	
 }
