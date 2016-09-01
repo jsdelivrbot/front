@@ -16,28 +16,34 @@
         document.querySelector('#diloo-chat-larges #pmsj').setAttribute('class','none');
       }
       ,abrir:function(){
-        document.querySelector('#diloo-chat-larges bubble').setAttribute('class','none');
-        document.querySelector('#diloo-chat-larges #pmsj').setAttribute('class','none');
-        document.querySelector('#diloo-chat-larges #allchat').setAttribute('class','shows');
-        document.querySelector('#diloo-chat-larges #allchat login').setAttribute('class','show');
+        document.querySelector('#pmsj').setAttribute('class','none')
+        document.querySelector('#allchat').setAttribute('class','shows')
+        document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat')
+
       }
       ,validation:function(e){
+        event.preventDefault()
         var nombre = document.getElementById('user').value;
         var email = document.getElementById('last_name').value;
         if (nombre.length>1) {
-          document.querySelector('#nombrev').setAttribute('style','visibility:hidden');
+          document.querySelector('.diloo-form .vname').setAttribute('style','visibility:hidden');
+        /*temporal
+          document.querySelector('#chat-body-login').setAttribute('class','none')
+            document.querySelector('#chat-body').setAttribute('class','show')}
+/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(email)
+            */
           if (email.length>=7) {
 
             diloo.User.create({name:nombre,email:email});
 
-            document.querySelector('#diloo-chat-larges #allchat login #formfc').setAttribute('class','none');
-            document.querySelector('#diloo-chat-larges #allchat chat').setAttribute('class','show');
-            document.querySelector('#emailv').setAttribute('style','visibility:hidden');
+            document.querySelector('#chat-body-login').setAttribute('class','none')
+            document.querySelector('#chat-body').setAttribute('class','show') 
+            document.querySelector('.diloo-form .vmail').setAttribute('style','visibility:hidden');
           }else{
-            document.querySelector('#emailv').setAttribute('style','visibility:visible');
+            document.querySelector('.diloo-form .vmail').setAttribute('style','visibility:visible');
           }
         }else{
-          document.querySelector('#nombrev').setAttribute('style','visibility:visible');
+          document.querySelector('.diloo-form .vname').setAttribute('style','visibility:visible');
         }
       }
       ,sendMessage:function(){
@@ -50,8 +56,8 @@
         message.value='';
       }
       ,cerrar:function(){
-        document.querySelector('#diloo-chat-larges bubble').setAttribute('class','show');
-        document.querySelector('#diloo-chat-larges #allchat').setAttribute('class','none');
+        document.querySelector('#allchat').setAttribute('class','none')
+        document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat-none')
       }
     }
   });
@@ -71,7 +77,7 @@
 
   function Diloo(){
     var c = window.$dilooApp;
-    var S ="http://192.168.1.7:4050";
+    var S ="http://192.168.1.7:4040";
     var s = io.connect(S);
     return {
         init: function(){

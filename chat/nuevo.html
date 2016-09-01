@@ -21,26 +21,22 @@
 		document.querySelector('#pmsj').setAttribute('class','none');
 	}function min(){
 		document.querySelector('#allchat').setAttribute('class','none')
-		document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat-none')
+		document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat-none')	
 	}function sendoff(){
 		event.preventDefault()
 		document.querySelector('.message-off').setAttribute('style','display:none;');
 		document.querySelector('.diloo-form-off').setAttribute('class','none');
 		document.querySelector('#send-off').setAttribute('class','show');
-	}function chatOn(){
-		event.preventDefault()
-		document.querySelector('#chat-body-login').setAttribute('class','none')
-		document.querySelector('#chat-body').setAttribute('class','show')	
 	}
 </script>
 <body>
 	<chatwindow id="diloo-chat-larges">
-			<div class="msj-pop" id="pmsj" v-on:click="a()">
-				<span id="diloo-message">Hola, ¿en que podemos ayudarte?</span>
-				<img class="oval" src="img/ic-close-round.png" onclick="closepop()">
+			<div class="msj-pop" id="pmsj">
+				<span id="diloo-message">{{widget.alert_message}}</span>
+				<img class="oval" src="img/ic-close-round.png" v-on:click="a()">
 				<div class="arrow-down"></div>
 			</div>
-			<bubble name="bubble_tag" class="show" onclick="mostrarlogin()">
+			<bubble name="bubble_tag" class="show" v-on:click="abrir()">
 				<div class="btn-msj" id="chat">
 					<img id="diloo-bubble" src="img/ic-globo-amarillo.png" />
 					<img id="diloo-bubble-response" src="img/ic-globo-blanco.png" />
@@ -56,8 +52,8 @@
 						</div>
 						<div class="Gotham-SA inline"> Gotham S.A </div>
 						<div class="Atencion">Atencion al cliente</div>
-						<div class="inline" id="mico" >
-							<span onclick="min();"> <strong>__</strong> </span>
+						<div class="inline" id="mico" v-on:click="cerrar()">
+							<span> <strong>__</strong> </span>
 						</div>
 				</div>
 			<!-- Reciber Dissable -->	
@@ -96,7 +92,7 @@
 			</div>
 			<!-- End Reciber Dissable -->
 			<!-- dash Login -->	
-			<div id="chat-body-login" class="none">
+			<div id="chat-body-login">
 					<div class="message">
 						<div class="reciber-print">
 							<span class="layer">Hola, ¿en que podemos ayudarte?</span>
@@ -107,12 +103,12 @@
 					<form class="diloo-form">
 						<div class="first-text"> Ingresa tus datos para conversar <img class="text-ico" src="img/smile.png">.</div>
 						<div class="label-name">Nombre</div>
-						<div class="vname">*Nombre muy corto</div>
-							<input class="field-name"></input>
+						<div class="vname" style="visibility: hidden;">*Nombre muy corto</div>
+							<input class="field-name" id="user"></input>
 						<div class="label-correo">Correo Electrónico</div>
-						<div class="vmail">*Correo inválido</div>
-							<input class="field-name"></input>
-							<button class="diloo-btn-login" onclick="chatOn()"> <span class="diloo-start">Iniciar chat</span></button>
+						<div class="vmail" style="visibility: hidden;">*Correo inválido</div>
+							<input class="field-name" id="last_name"></input>
+							<button class="diloo-btn-login" v-on:click="validation();"> <span class="diloo-start">Iniciar chat</span></button>
 						<div class="diloo-term-login">Al iniciar el chat estás aceptando las <span class="politic">Políticas de Privacidad. </span></div>
 					</form>
 						<div class="powered">Powered by <span class="politic">Diloo.</span></div>
@@ -123,23 +119,27 @@
 			<div id="chat-body" class="none">
 				<div class="chat-msg" id="scroll">
 					<div class="message">
-						<div class="reciber-print">
-							<span class="layer">Hola, ¿en que podemos ayudarte?</span>
+						<div class="reciber">
+							<span class="layer-reciber">Hola, ¿en que podemos ayudarte?</span>
 						</div>
 						<div class="message-time">10:35 pm</div>
 					</div>
-					<div class="nuevoSender">
-								<span class="userlayer">Care not to perform this part of my task methodically; but shall be content to produce the desired impression by separate citations of items.</span>	
+					<div class="{{m.type}}" v-for="m in ticket.message_">
+								<span class="{{m.type}}layer">{{ m.body }}</span>	
 					</div>
-				
-					<div class="powered">Powered by <span class="politic">Diloo.</span></div>	
+					<div class="powered">Powered by <span class="politic">Diloo.</span></div>
 				</div>
 				<div class="write">
-					<input class="introducir-chat"></input>
+					<form method="POST" v-on:submit.prevent="sendMessage">
+						<input class="introducir-chat" id="msm"></input>
+					</form>	
 				</div>	
 			</div>		
 		</div>
 			<div class="arrow-down-chat-none" id="arrow-chat"></div>
 		</chatwindow>
+		<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+      <script src="https://vuejs.org/js/vue.min.js" charset="utf-8"></script>
+      <script src="js/adonis.js" charset="utf-8"></script>
 </body>
 </html>
