@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>diloochat</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+  <style type="text/css">
+  	body{font-family: 'PT Sans', sans-serif;}
+  </style>
+	<link rel="stylesheet" type="text/css" href="http://8a7ac51e.ngrok.io/chat/css/main.css">
 </head>
-<style type="text/css">
-	body{font-family: 'PT Sans', sans-serif;}
-</style>
 <script>
 	function mostrarOff(){
 		document.querySelector('#pmsj').setAttribute('class','none')
@@ -25,7 +25,7 @@
 		document.querySelector('#pmsj').setAttribute('class','none');
 	}function min(){
 		document.querySelector('#allchat').setAttribute('class','none')
-		document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat-none')	
+		document.querySelector('#arrow-chat').setAttribute('class','arrow-down-chat-none')
 	}function sendoff(){
 		event.preventDefault()
 		document.querySelector('.message-off').setAttribute('style','display:none;');
@@ -52,15 +52,15 @@
 			<div id="allchat" name="allchat" class="none">
 				<div id="header" class="header-bg">
 						<div class="inline">
-						<img src="img/burbuja_0007_chat01.png" class="logo">
+						<img :src="company.image" class="logo">
 						</div>
-						<div class="Gotham-SA inline"> Gotham S.A </div>
+						<div class="Gotham-SA inline"> {{company.name}} </div>
 						<div class="Atencion">Atencion al cliente</div>
 						<div class="inline" id="mico" v-on:click="cerrar()">
 							<span> <strong>__</strong> </span>
 						</div>
 				</div>
-			<!-- Reciber Dissable -->	
+			<!-- Reciber Dissable -->
 			<div id="chat-body-off" class="none">
 				<div id="container-off" class="show">
 					<div class="message-off">
@@ -89,21 +89,21 @@
 				<div class="fondo-verde">
 					<img src="http://res.cloudinary.com/dp5whc7r3/image/upload/v1472832832/check-circle-material-icons-regular-copy_pmpti2.png" class="check">
 					<div class="enviado">Mensaje enviado</div>
-				</div>	
-				<div class="nos-pondremos">Nos pondremos en contacto contigo lo más pronto posible. </div>	
-				<div class="cerrar-ventana">Cerrar ventana</div>			
+				</div>
+				<div class="nos-pondremos">Nos pondremos en contacto contigo lo más pronto posible. </div>
+				<div class="cerrar-ventana">Cerrar ventana</div>
 				</div>
 			</div>
 			<!-- End Reciber Dissable -->
-			<!-- dash Login -->	
+			<!-- dash Login -->
 			<div id="chat-body-login">
 					<div class="message">
 						<div class="reciber-print">
-							<span class="layer">Hola, ¿en que podemos ayudarte?</span>
+							<span class="layer">{{company.defaultMessage}}</span>
 						</div>
 						<div class="message-time">10:35 pm</div>
 					</div>
-				<div class="diloo-loggin">					
+				<div class="diloo-loggin">
 					<form class="diloo-form">
 						<div class="first-text"> Ingresa tus datos para conversar <img class="text-ico" src="http://res.cloudinary.com/dp5whc7r3/image/upload/v1472832845/smile_gdkief.png">.</div>
 						<div class="label-name">Nombre</div>
@@ -116,28 +116,28 @@
 						<div class="diloo-term-login">Al iniciar el chat estás aceptando las <a class="politic" href="#">Políticas de Privacidad. </a></div>
 					</form>
 						<div class="powered">Powered by <a href="http://get.dilooapp.com/" target="_blank" class="politic">dilooapp.</a></div>
-				</div>	
+				</div>
 			</div>
 			<!--login end-->
 			<!-- Chat body -->
 			<div id="chat-body" class="none">
 				<div class="chat-msg" id="scroll">
 					<div class="{{m.type}}" v-for="m in ticket.message_">
-								<span class="{{m.type}}layer">{{ m.body }}</span>	
+								<span class="{{m.type}}layer">{{ m.body }}</span>
 					</div>
 					<div class="powered">Powered by <a href="http://get.dilooapp.com/" target="_blank" class="politic">dilooapp.</a></div>
 				</div>
 				<div class="write">
 					<form method="POST" v-on:submit.prevent="sendMessage">
 						<input class="introducir-chat" id="msm"></input>
-					</form>	
-				</div>	
-			</div>		
+					</form>
+				</div>
+			</div>
 		</div>
 			<div class="arrow-down-chat-none" id="arrow-chat"></div>
 		</chatwindow>
 		<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
       <script src="https://vuejs.org/js/vue.min.js" charset="utf-8"></script>
-      <script src="js/adonis.js" charset="utf-8"></script>
+      <script src="http://8a7ac51e.ngrok.io/chat/js/adonis.js" charset="utf-8"></script>
 </body>
 </html>
