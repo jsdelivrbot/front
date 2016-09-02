@@ -10,6 +10,7 @@
       ,ticket:{
         message_:[]
       }
+      ,company:{}
     }
     ,methods:{
       a:function(){
@@ -37,7 +38,7 @@
             diloo.User.create({name:nombre,email:email});
 
             document.querySelector('#chat-body-login').setAttribute('class','none')
-            document.querySelector('#chat-body').setAttribute('class','show') 
+            document.querySelector('#chat-body').setAttribute('class','show')
             document.querySelector('.diloo-form .vmail').setAttribute('style','visibility:hidden');
           }else{
             document.querySelector('.diloo-form .vmail').setAttribute('style','visibility:visible');
@@ -77,7 +78,7 @@
 
   function Diloo(){
     var c = window.$dilooApp;
-    var S ="http://192.168.1.7:4040";
+    var S ="http://4860c2ca.ngrok.io";
     var s = io.connect(S);
     return {
         init: function(){
@@ -85,8 +86,9 @@
             s.emit('getCompanyInfo',{companyId:cid},function(r){
               window.$dilooApp.w=JSON.parse(window.$dilooApp.w);
               window.$dilooApp.c=r.response;
+              dilooWidget.company = window.$dilooApp.c;
               dilooWidget.ticket.message_.push({
-                type:"nuevoSender"
+                type:"reciber"
                 ,body:window.$dilooApp.c.defaultMessage
                 ,createdAt:new Date()
               })
