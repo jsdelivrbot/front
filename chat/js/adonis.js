@@ -51,6 +51,9 @@
         var message = document.getElementById('msm');
         if(this.ticket.id_){
           diloo.Ticket.sendMessage(message.value);
+          var elmnt = document.getElementById("scroll");
+          var scro=document.getElementById('scroll').clientHeight;
+          elmnt.scrollTop = scro;
         }else{
           diloo.Ticket.create(message.value);
         }
@@ -170,6 +173,7 @@
                type:"reciber"
                ,body:data.body
              });
+            document.getElementById('msm').setAttribute('disabled','true');
              s.emit('leave','ticket:'+data.ticket,function(m){
                console.log(m);
              });
