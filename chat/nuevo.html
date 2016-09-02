@@ -83,7 +83,7 @@
 								<button class="diloo-btn" onclick="sendoff()"> <span class="diloo-start">Enviar Mensaje</span></button>
 							<div class="diloo-term">Al iniciar el chat estás aceptando las <span class="politic">Políticas de Privacidad. </span></div>
 						</form>
-					<div class="powered">Powered by <span class="politic">Diloo.</span></div>
+					<div class="powered">Powered by <a href="http://get.dilooapp.com/" target="_blank" class="politic">dilooapp.</a></div>
 				</div>
 				<div id="send-off" class="none">
 				<div class="fondo-verde">
@@ -113,25 +113,19 @@
 						<div class="vmail" style="visibility: hidden;">*Correo inválido</div>
 							<input class="field-name" id="last_name"></input>
 							<button class="diloo-btn-login" v-on:click="validation();"> <span class="diloo-start">Iniciar chat</span></button>
-						<div class="diloo-term-login">Al iniciar el chat estás aceptando las <span class="politic">Políticas de Privacidad. </span></div>
+						<div class="diloo-term-login">Al iniciar el chat estás aceptando las <a class="politic" href="#">Políticas de Privacidad. </a></div>
 					</form>
-						<div class="powered">Powered by <span class="politic">Diloo.</span></div>
+						<div class="powered">Powered by <a href="http://get.dilooapp.com/" target="_blank" class="politic">dilooapp.</a></div>
 				</div>	
 			</div>
 			<!--login end-->
 			<!-- Chat body -->
 			<div id="chat-body" class="none">
 				<div class="chat-msg" id="scroll">
-					<div class="message">
-						<div class="reciber">
-							<span class="layer-reciber">Hola, ¿en que podemos ayudarte?</span>
-						</div>
-						<div class="message-time">10:35 pm</div>
-					</div>
 					<div class="{{m.type}}" v-for="m in ticket.message_">
 								<span class="{{m.type}}layer">{{ m.body }}</span>	
 					</div>
-					<div class="powered">Powered by <span class="politic">Diloo.</span></div>
+					<div class="powered">Powered by <a href="http://get.dilooapp.com/" target="_blank" class="politic">dilooapp.</a></div>
 				</div>
 				<div class="write">
 					<form method="POST" v-on:submit.prevent="sendMessage">
