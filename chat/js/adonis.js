@@ -86,7 +86,7 @@
 
   function Diloo(){
     var c = window.$dilooApp;
-    var S ="http://098c6400.ngrok.io";
+    var S ="http://39593f9b.ngrok.io";
     var s = io.connect(S);
     return {
         init: function(){
@@ -136,7 +136,7 @@
         }
         ,User:{
           create:function(user){
-            var u = {
+            /*var u = {
               name      : user.name
               ,email    : user.email
               ,origin   : window.$dilooApp.w.execType
@@ -145,7 +145,11 @@
             s.emit('createUser',u,function(r){
               console.log(r);
               window.$dilooApp.u=r.response;
-            })
+            });*/
+            window.$dilooApp.u = {
+              userid     : '1e7234ec-672d-4adc-9da6-a4c0dc6b2992'
+              ,sessionid : '244372be-efd9-4bfb-925b-a0858b95befe'
+            }
           }
         }
         ,Ticket:{
