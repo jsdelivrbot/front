@@ -4,8 +4,14 @@
     el:'#diloo-chat-larges'
     ,data:{
       widget:{
-        alert_message:""
-        ,image:""
+        welcome_message :""
+        ,button_color   :""
+        ,header_color   :""
+        ,input_rules    :{}
+        ,left_bubble    :""
+        ,right_bubble   :""
+        ,text_color     :""
+        ,offline_message: ""
       }
       ,ticket:{
         message_:[]
@@ -26,20 +32,19 @@
         event.preventDefault()
         var nombre = document.getElementById('user').value;
         var email = document.getElementById('last_name').value;
+        var phon = document.getElementById('phone').value;
         if (nombre.length>1) {
           document.querySelector('.diloo-form .vname').setAttribute('style','visibility:hidden');
-        /*temporal
-          document.querySelector('#chat-body-login').setAttribute('class','none')
-            document.querySelector('#chat-body').setAttribute('class','show')}
-/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(email)
-            */
+
           if (email.length>=7) {
-
-            diloo.User.create({name:nombre,email:email});
-
-            document.querySelector('#chat-body-login').setAttribute('class','none')
-            document.querySelector('#chat-body').setAttribute('class','show')
-            document.querySelector('.diloo-form .vmail').setAttribute('style','visibility:hidden');
+              document.querySelector('.diloo-form .vmail').setAttribute('style','visibility:hidden');
+              if (phon.length==9) {
+                diloo.User.create({name:nombre,email:email});
+                document.querySelector('#chat-body-login').setAttribute('class','none');
+                document.querySelector('#chat-body').setAttribute('class','show');
+              }else{
+              document.querySelector('.diloo-form .vphone').setAttribute('style','visibility:visible');
+              }
           }else{
             document.querySelector('.diloo-form .vmail').setAttribute('style','visibility:visible');
           }
@@ -81,7 +86,7 @@
 
   function Diloo(){
     var c = window.$dilooApp;
-    var S ="http://4860c2ca.ngrok.io";
+    var S ="http://098c6400.ngrok.io";
     var s = io.connect(S);
     return {
         init: function(){
@@ -101,14 +106,31 @@
           setType:function(){
             var src = "";
             var widget = JSON.parse(c.w);
-            if (widget.widget_type=="type0") {
-              src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja01_48.png";
-            }else if(widget.widget_type=="type1"){
-              src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja02_48.png";
+            if (widget.input_rules.name!=true && widget.input_rules.email!=true && widget.input_rules.phone!=true) {
+              document.querySelector('#chat-body-login').setAttribute('class','none');
+              document.querySelector('#chat-body').setAttribute('class','show');
             }else{
-              src="https://s3-sa-east-1.amazonaws.com/diloo-assets/widget/burbuja03_48.png";
+              if (widget.input_rules.name==true) {
+                document.querySelector('#user').setAttribute('style','display:block');
+                document.querySelector('#label_name').setAttribute('style','display:block');
+              }else{
+                document.querySelector('#user').setAttribute('style','display:none');
+                document.querySelector('#label_name').setAttribute('style','display:none');
+              }if(widget.input_rules.email==true){
+                document.querySelector('#last_name').setAttribute('style','display:block');
+                document.querySelector('#label_correo').setAttribute('style','display:block');
+              }else{
+                  document.querySelector('#last_name').setAttribute('style','display:none');
+                  document.querySelector('#label_correo').setAttribute('style','display:none');
+              }if(widget.input_rules.phone==true){
+                document.querySelector('#phone').setAttribute('style','display:block');
+                document.querySelector('#labelp').setAttribute('style','display:block');
+              }else{
+                document.querySelector('#phone').setAttribute('style','display:none');
+                document.querySelector('#labelp').setAttribute('style','display:none');
+              }
             }
-            widget.image = src;
+            //widget.image = src;
             dilooWidget.widget=widget;
           }
         }
