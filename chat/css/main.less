@@ -1,6 +1,3 @@
-body{
-	background-color: skyblue !important;
-}
 #diloo-chat-larges{
 	border-radius: 5px;
 	display: block;
@@ -50,20 +47,27 @@ body{
 			display: none !important;
 		}.show{display: block !important;}	
 		#pmsj{ 
-			  	width: 233px;
-			    height: 63px;
-			    border-radius: 5px;
-			    background-color: #ffffff;
-			    border: solid 1px #f2f2f2;
-			    position: fixed;
-			    bottom: 84px;
-			    right: 45px;
+			  	    width: 233px;
+			  	    min-width: 233px;
+				    height: 63px;
+				    min-height: 63px;
+				    max-height: 70px;
+				    border-radius: 5px;
+				    background-color: #ffffff;
+				    border: solid 1px #f2f2f2;
+				    position: fixed;
+				    bottom: 84px;
+				    display: flex;
+				    justify-content: center;
+				    align-content: center;
+				    flex-direction: column;
+				    right: 45px;
 			}
 		.close{ cursor:pointer; width: 12px; height: 12px; background-color: white; border-radius: 50%; position: absolute; right: 3px; text-align: center; vertical-align: middle; top: 0px; }
 		.chatea-con-nosotros {
 			  width: 113px;
 			  height: 17px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  font-weight: bold;
 			  letter-spacing: -0.5px;
@@ -83,15 +87,16 @@ body{
 			    cursor: pointer;       
 					}
 		#diloo-message {
-		  width: 186px;
-		  height: 17px;
-		  font-family: PTSans;
-		  font-size: 14px;
+		  width: 200px;
+		  max-height: 70px;
+		  font-family: 'PT Sans', sans-serif;
+		  font-size: 0.8em;
 		  letter-spacing: -0.6px;
 		  color: #4c4c4c;
-		  position: relative;
+		  /*position: relative;
 		  top: 22px;
-		  left: 26px;
+		  left: 26px;*/
+		  margin-left: 15px;
 		}
 		.oval {
 		 width: 18px;
@@ -155,9 +160,9 @@ body{
 	    right: 58px;
 		}
 		.Gotham-SA {
-		  	width: 69px;
+		  	width: 70%;
 		    height: 14px;
-		    font-family: PTSans;
+		    font-family: 'PT Sans', sans-serif;
 		    font-size: 14px;
 		    font-weight: bold;
 		    position: relative;
@@ -169,7 +174,7 @@ body{
 		}.Atencion {
 		    width: 103px;
 		    height: 14px;
-		    font-family: PTSans;
+		    font-family: 'PT Sans', sans-serif;
 		    font-size: 14px;
 		    position: relative;
 		    line-height: 1;
@@ -191,7 +196,7 @@ body{
 		    top: 9px;
 		}.reciber{
 		    width: auto;
-		    max-width: 50%;
+		    max-width: 80%;
 		    height: auto;
 		    border-radius: 5px;
 		    background-color: #f2f2f2;
@@ -203,26 +208,26 @@ body{
 		}
 		.nuevoSender {
 		    width: auto;
-		    max-width: 50%;
+		    max-width: 77%;
 		    height: auto;
 		    border-radius: 5px;
 		    background-color: #1381e0;
 		    position: relative;
-		    right: -44%;
+		    right: -16%;
 		    padding: 6px;
 		    margin-top: 10px;
 		    display: block;
 
 		}
 		.nuevoSenderlayer{
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
   			  font-size: 14px;
 			  color: #ffffff;
 			}
 		.layer {
 		  width: 186px;
 		  height: 17px;
-		  font-family: PTSans;
+		  font-family: 'PT Sans', sans-serif;
 		  font-size: 14px;
 		  letter-spacing: -0.6px;
 		  color: #4c4c4c;
@@ -231,7 +236,7 @@ body{
     	  left: 15px;
     	  display: block;
 		}.reciberlayer{
-			font-family: PTSans;
+			font-family: 'PT Sans', sans-serif;
   			  font-size: 14px;
 			  color: #4c4c4c;
 		}
@@ -246,7 +251,7 @@ body{
 		    }.message-time{
 		        width: 37px;
 			    height: 12px;
-			    font-family: PTSans;
+			    font-family: 'PT Sans', sans-serif;
 			    font-size: 10px;
 			    letter-spacing: -0.4px;
 			    color: #9b9b9b;
@@ -267,7 +272,7 @@ body{
 		    	}.first-text{
 		      width: 280px;
 			  height: 16px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  font-weight: bold;
 			  line-height: 1.14;
@@ -292,7 +297,7 @@ body{
 		    }.mensaje-off {
 			      width: 39px;
 				    height: 14px;
-				    font-family: PTSans;
+				    font-family: 'PT Sans', sans-serif;
 				    font-size: 12px;
 				    letter-spacing: -0.4px;
 				    color: #4c4c4c;
@@ -301,7 +306,7 @@ body{
 			}.label-name {
 			  width: 39px;
 			  height: 14px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 12px;
 			  letter-spacing: -0.4px;
 			  color: #4c4c4c;
@@ -339,7 +344,7 @@ body{
 			}.label-correo {
 			  width: 87px;
 			  height: 14px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 12px;
 			  letter-spacing: -0.4px;
 			  color: #4c4c4c;
@@ -367,7 +372,7 @@ body{
 				}.diloo-start{
 				width: 73px;
 			  height: 18px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 16px;
 			  font-weight: bold;
 			  letter-spacing: -0.2px;
@@ -375,7 +380,7 @@ body{
 			}.diloo-term{
 				width: 271px;
 			  height: 12px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 10px;
 			  letter-spacing: -0.1px;
 			  text-align: center;
@@ -385,7 +390,7 @@ body{
 			}.diloo-term-login{
 				width: 271px;
 			  height: 12px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 10px;
 			  letter-spacing: -0.1px;
 			  text-align: center;
@@ -475,7 +480,7 @@ body{
 			.title-off {
 			  width: 280px;
 			  height: 21px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 18px;
 			  font-weight: bold;
 			  letter-spacing: -0.3px;
@@ -486,7 +491,7 @@ body{
 			}.text-off {
 			  width: 280px;
 			  height: 34px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  letter-spacing: -0.1px;
 			  text-align: center;
@@ -520,7 +525,7 @@ body{
 			}.enviado{
 				 width: 137px;
 			    height: 21px;
-			    font-family: PTSans;
+			    font-family: 'PT Sans', sans-serif;
 			    font-size: 18px;
 			    font-weight: bold;
 			    letter-spacing: -0.8px;
@@ -532,7 +537,7 @@ body{
 			}.nos-pondremos {
 			  width: 280px;
 			  height: 34px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  letter-spacing: -0.6px;
 			  text-align: center;
@@ -544,7 +549,7 @@ body{
 			}.cerrar-ventana {
 			  width: 79px;
 			  height: 17px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  letter-spacing: -0.6px;
 			  text-align: center;
@@ -574,7 +579,7 @@ body{
 	    .label-correo {
 					  width: 50%;
 					  height: 14px;
-					  font-family: PTSans;
+					  font-family: 'PT Sans', sans-serif;
 					  font-size: 12px;
 					  letter-spacing: -0.4px;
 					  color: #4c4c4c;
@@ -604,9 +609,9 @@ body{
 			  border-radius: 1px 1px 5px 5px;
 			  background-color: rgb(230, 230, 230);}
 	    .Gotham-SA {
-		  	width: 50%;
+		  	width: 70%;
 		    height: 14px;
-		    font-family: PTSans;
+		    font-family: 'PT Sans', sans-serif;
 		    font-size: 14px;
 		    font-weight: bold;
 		    position: relative;
@@ -618,7 +623,7 @@ body{
 		}.Atencion {
 		    width: 50%;
 		    height: 14px;
-		    font-family: PTSans;
+		    font-family: 'PT Sans', sans-serif;
 		    font-size: 14px;
 		    position: relative;
 		    line-height: 1;
@@ -649,7 +654,7 @@ body{
 	    }.message-time{
 		        width: 50%;
 			    height: 12px;
-			    font-family: PTSans;
+			    font-family: 'PT Sans', sans-serif;
 			    font-size: 10px;
 			    letter-spacing: -0.4px;
 			    color: #9b9b9b;
@@ -728,7 +733,7 @@ body{
 	    .nos-pondremos {
 			  width: 50%;
 			  height: 34px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  letter-spacing: -0.6px;
 			  text-align: center;
@@ -740,7 +745,7 @@ body{
 			}.cerrar-ventana {
 			  width: 50%;
 			  height: 17px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  letter-spacing: -0.6px;
 			  text-align: center;
@@ -751,7 +756,7 @@ body{
 			}.enviado{
 				 width: 137px;
 			    height: 21px;
-			    font-family: PTSans;
+			    font-family: 'PT Sans', sans-serif;
 			    font-size: 18px;
 			    font-weight: bold;
 			    letter-spacing: -0.8px;
@@ -784,7 +789,7 @@ body{
 		.cerrar-ventana {
 			  width: 50%;
 			  height: 17px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  letter-spacing: -0.6px;
 			  text-align: center;
@@ -806,7 +811,7 @@ body{
 	    .label-name {
 			  width: 39px;
 			  height: 14px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 12px;
 			  letter-spacing: -0.4px;
 			  color: #4c4c4c;
@@ -826,7 +831,7 @@ body{
 			.title-off {
 			  width: 280px;
 			  height: 21px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 18px;
 			  font-weight: bold;
 			  letter-spacing: -0.3px;
@@ -837,7 +842,7 @@ body{
 			}.text-off {
 			  width: 280px;
 			  height: 34px;
-			  font-family: PTSans;
+			  font-family: 'PT Sans', sans-serif;
 			  font-size: 14px;
 			  letter-spacing: -0.1px;
 			  text-align: center;
@@ -849,7 +854,7 @@ body{
 		.label-correo {
 					  width: 80%;
 					  height: 14px;
-					  font-family: PTSans;
+					  font-family: 'PT Sans', sans-serif;
 					  font-size: 12px;
 					  letter-spacing: -0.4px;
 					  color: #4c4c4c;
@@ -875,9 +880,9 @@ body{
 			  border-radius: 1px 1px 5px 5px;
 			  background-color: rgb(230, 230, 230);}
 	    .Gotham-SA {
-		  	width: 50%;
+		  	width: 70%;
 		    height: 14px;
-		    font-family: PTSans;
+		    font-family: 'PT Sans', sans-serif;
 		    font-size: 14px;
 		    font-weight: bold;
 		    position: relative;
@@ -889,7 +894,7 @@ body{
 		}.Atencion {
 		    width: 50%;
 		    height: 14px;
-		    font-family: PTSans;
+		    font-family: 'PT Sans', sans-serif;
 		    font-size: 14px;
 		    position: relative;
 		    line-height: 1;
@@ -920,7 +925,7 @@ body{
 	    }.message-time{
 		        width: 50%;
 			    height: 12px;
-			    font-family: PTSans;
+			    font-family: 'PT Sans', sans-serif;
 			    font-size: 10px;
 			    letter-spacing: -0.4px;
 			    color: #9b9b9b;
@@ -993,9 +998,9 @@ body{
 			  border-radius: 1px 1px 5px 5px;
 			  background-color: rgb(230, 230, 230);}
 	    .Gotham-SA {
-		  	width: 50%;
+		  	width: 70%;
 		    height: 14px;
-		    font-family: PTSans;
+		    font-family: 'PT Sans', sans-serif;
 		    font-size: 14px;
 		    font-weight: bold;
 		    position: relative;
@@ -1004,10 +1009,12 @@ body{
 		    color: #ffffff;
 		    left: 18px;
 		    bottom: 8px;
+		}.powered {
+		    display: none;
 		}.Atencion {
 		    width: 50%;
 		    height: 14px;
-		    font-family: PTSans;
+		    font-family: 'PT Sans', sans-serif;
 		    font-size: 14px;
 		    position: relative;
 		    line-height: 1;
@@ -1027,7 +1034,7 @@ body{
 		    right: 85px;
 		    cursor: pointer;
 		    	#diloo-message{
-				    font-family: PTSans;
+				    font-family: 'PT Sans', sans-serif;
 				    font-size: 12px;
 				    letter-spacing: -0.6px;
 				    color: #4c4c4c;
@@ -1039,7 +1046,7 @@ body{
 		.message-time{
 		        width: 50%;
 			    height: 12px;
-			    font-family: PTSans;
+			    font-family: 'PT Sans', sans-serif;
 			    font-size: 10px;
 			    letter-spacing: -0.4px;
 			    color: #9b9b9b;
