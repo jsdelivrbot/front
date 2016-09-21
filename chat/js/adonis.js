@@ -74,11 +74,17 @@
       return (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(d.cookie)) && name[1];
   }
   try{
+    if (window.localStorage.$dilooApp.length>0) {
+      document.querySelector('#chat-body-login').setAttribute('class','none');
+      document.querySelector('#chat-body').setAttribute('class','show');
+      getTicketMessages(window.localStorage.$dilooApp);
+    }else{
       window.$dilooApp.w = JSON.parse(atob(readCookie('__cid')));
       var diloo = new Diloo();
       diloo.init();
       diloo.Widget.setType();
       diloo.listeners();
+      }
   }catch(e){
     console.error(e);
   }
@@ -153,6 +159,11 @@
           }
         }
         ,Ticket:{
+            getTicketMessages:function(TicketId){
+              s.emit('getTicketMessages',{
+                ticketId:TicketId
+              })
+            }
             create:function(message){
                 var u = window.$dilooApp.u;
                 var w = window.$dilooApp.w;
@@ -190,11 +201,13 @@
           });
           s.on('rsp_createTicket',function(r){
             dilooWidget.ticket = r.response;
+            window.localStorage.$dilooApp = r.response.id_; 
           });
           s.on('rsp_createMessage',function(message){
             dilooWidget.ticket.message_.push(message);
           });
           s.on("closeTicket",function(data){
+            window.localStorage.$dilooApp = "";
             dilooWidget.ticket.message_.push({
                type:"reciber"
                ,body:data.body
